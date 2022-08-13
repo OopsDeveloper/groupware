@@ -13,7 +13,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring-config/applicationContext.xml",
+@ContextConfiguration({
+        "file:src/main/webapp/WEB-INF/spring-config/applicationContext.xml",
         "file:src/main/webapp/WEB-INF/spring-config/security-context.xml"
                         })
 public class LoginTest {

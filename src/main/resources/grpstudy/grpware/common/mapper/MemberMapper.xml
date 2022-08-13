@@ -6,32 +6,33 @@
 
     <resultMap id="memberMap" type="grpstudy.grpware.common.domain.MemberVO">
         <id property="memberId" column="member_id" />
+        <result property="memberNo" column="member_no" />
         <result property="memberId" column="member_id" />
         <result property="memberPw" column="member_pw" />
         <result property="memberNm" column="member_nm" />
         <result property="memberBirth" column="member_birth" />
         <result property="memberMail" column="member_mail" />
         <result property="memberPhone" column="member_phone" />
-        <result property="registDt" column="regist_dt" />
         <collection property="authList" resultMap="authMap" />
     </resultMap>
     <resultMap id="authMap" type="grpstudy.grpware.common.domain.AuthVO">
-        <result property="memberId" column="member_id" />
-        <result property="auth" column="auth" />
+        <result property="authId" column="auth_id" />
+        <result property="authAuth" column="auth_auth" />
     </resultMap>
 
     <select id="read" resultMap="memberMap">
-        select  a.member_id
+        select  a.member_no
+             ,  a.member_id
              ,  a.member_pw
              ,  a.member_nm
              ,  a.member_birth
              ,  a.member_mail
              ,  a.member_phone
-             ,  a.regist_dt
-             ,  b.auth
-        from  tb_member a, tb_member_auth b
-        where a.member_id = b.member_id
-        and   a.member_id = #{member_id}
+             ,  b.auth_id
+             ,  b.auth_auth
+        from  oopsdev.tb_member a, oopsdev.tb_auth b
+        where a.member_id = b.auth_id
+        and   a.member_id = #{memberId}
     </select>
 
 </mapper>

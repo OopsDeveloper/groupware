@@ -14,7 +14,7 @@ public class MemberVO {
     private Date memberBirth;
     private String memberMail;
     private String memberPhone;
-    private Date registDt;
+    //private Date registDt;
 
     private List<AuthVO> authList;
 }
