@@ -23,11 +23,11 @@ public class CommonUtils {
     }
 
     /**
-     * @param data
      * @return
      * @description object to json
      * @date 2022. 08. 13.
      * @author 고용수
+     * @param data
      */
     public static String toJson(Object data) {
         ObjectMapper objectMapper = new ObjectMapper();
