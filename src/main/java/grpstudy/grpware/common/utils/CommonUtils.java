@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 public class CommonUtils {
 
     /**
@@ -37,5 +40,17 @@ public class CommonUtils {
             e.printStackTrace();
             return "json 변환을 실패하였습니다.";
         }
+    }
+
+    /**
+     * @description 로그인 계정이 admin 권한이 있는지 체크
+     * @date 2022. 08. 13.
+     * @author 고용수
+     * @return
+     */
+    public static boolean isAdmin() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Set<String> roles = authentication.getAuthorities().stream().map(r -> r.getAuthority()).collect(Collectors.toSet());
+        return roles.contains("ROLE_ADMIN");
     }
 }
