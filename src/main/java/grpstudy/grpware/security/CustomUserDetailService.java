@@ -1,8 +1,8 @@
-package grpstudy.grpware.common.security;
+package grpstudy.grpware.security;
 
-import grpstudy.grpware.common.domain.CustomUser;
-import grpstudy.grpware.common.domain.MemberVO;
-import grpstudy.grpware.common.mapper.MemberMapper;
+import grpstudy.grpware.login.domain.CustomUser;
+import grpstudy.grpware.login.domain.MemberVO;
+import grpstudy.grpware.login.mapper.MemberMapper;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package grpstudy.grpware.common.domain;
+package grpstudy.grpware.login.domain;
 
 import lombok.Data;
 

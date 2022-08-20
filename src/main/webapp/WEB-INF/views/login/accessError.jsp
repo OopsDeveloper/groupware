@@ -4,7 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>SampleRead</title>
+    <title>AccessError</title>
 </head>
 <body>
     <h1><c:out value="${msg}" /></h1>

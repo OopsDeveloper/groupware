@@ -1,4 +1,4 @@
-package grpstudy.grpware.common;
+package grpstudy.grpware.login;
 
 import lombok.Setter;
 import org.junit.Test;

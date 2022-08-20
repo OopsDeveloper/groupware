@@ -8,18 +8,21 @@
        ">
     <!--빈(Bean) 설정-->
     <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-    <bean id="customUserDetailService" class="grpstudy.grpware.common.security.CustomUserDetailService" />
+    <bean id="customUserDetailService" class="grpstudy.grpware.security.CustomUserDetailService" />
 
     <security:http>
         <!-- 로그인 url -->
-        <security:form-login login-page="/common/login.html" />
+        <security:form-login login-page="/login/login.html" />
         <!-- 로그아웃 url -->
-        <security:logout logout-url="/common/logout.html" invalidate-session="true" />
+        <security:logout logout-url="/login/logout.html" invalidate-session="true" />
+
+        <!-- 20220820 디자인 resource 허용 -->
+        <security:intercept-url pattern="/resources/**" access="permitAll" />
 
         <security:intercept-url pattern="/main.html" access="hasRole('ROLE_MEMBER')" />
 
         <!-- 접근 권한 없는 경우(아이디/비밀번호가 존재하나 권한이 없음) 이동 페이지 -->
-        <security:access-denied-handler error-page="/common/accessError.html" />
+        <security:access-denied-handler error-page="/login/accessError.html" />
 
     </security:http>
 

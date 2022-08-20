@@ -9,6 +9,6 @@
 <body>
     <h1>메인 페이지</h1>
 
-    <a href="/common/logout.html">로그아웃</a>
+    <a href="/login/logout.html">로그아웃</a>
 </body>
 </html>

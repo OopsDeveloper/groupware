@@ -14,15 +14,18 @@
 
     <form method="post" action="/login">
         <div>
-            <input type="text" name="username" value="member01">
+            <input type="text" name="username" value="test2">
         </div>
         <div>
-            <input type="password" name="password" value="member01">
+            <input type="password" name="password" value="test2">
         </div>
         <div>
             <input type="submit">
         </div>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form>
+    <div>
+        <a href="/register/write.html">회원가입하기</a>
+    </div>
 </body>
 </html>
