@@ -48,13 +48,8 @@ public class CommonController {
 
     //시큐리티 로그아웃 페이지 이동
     @GetMapping("/logout.html")
-    public void logoutGET(){
-
-    }
-    //시큐리티 로그아웃 페이지 이동
-    @PostMapping("/logout.html")
-    public void logoutPOST(){
-
+    public String logoutGET(){
+        return "/common/login";
     }
 
 
