@@ -24,8 +24,8 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <!-- *.html로 url을 접근한다 -->
-        <url-pattern>*.html</url-pattern>
+        <!-- *.do로 url을 접근한다 -->
+        <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
     <!-- 20220806 스프링 시큐리티 설정-->
@@ -40,6 +40,6 @@
 
     <!-- 20220820 최초접속 시 경로 설정-->
     <welcome-file-list>
-        <welcome-file>main.html</welcome-file>
+        <welcome-file>main.do</welcome-file>
     </welcome-file-list>
 </web-app>

@@ -8,21 +8,27 @@
        ">
     <!--빈(Bean) 설정-->
     <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+    <bean id="customAccessDenied" class="grpstudy.grpware.security.CustomAccessDeniedHandler" />
     <bean id="customUserDetailService" class="grpstudy.grpware.security.CustomUserDetailService" />
+    <bean id="customLoginSuccess" class="grpstudy.grpware.security.CustomLoginSuccessHandler" />
 
     <security:http>
         <!-- 로그인 url -->
-        <security:form-login login-page="/login/login.html" />
+        <security:form-login login-page="/login/login.do"
+                             authentication-success-handler-ref="customLoginSuccess"/>
         <!-- 로그아웃 url -->
-        <security:logout logout-url="/login/logout.html" invalidate-session="true" />
+        <security:logout logout-url="/login/logout.do" invalidate-session="true"
+                         delete-cookies="remember-me,JSESSION_ID" success-handler-ref=""/>
 
         <!-- 20220820 디자인 resource 허용 -->
         <security:intercept-url pattern="/resources/**" access="permitAll" />
 
-        <security:intercept-url pattern="/main.html" access="hasRole('ROLE_MEMBER')" />
+        <security:intercept-url pattern="/main.do" access="hasRole('ROLE_MEMBER')" />
 
         <!-- 접근 권한 없는 경우(아이디/비밀번호가 존재하나 권한이 없음) 이동 페이지 -->
-        <security:access-denied-handler error-page="/login/accessError.html" />
+        <security:access-denied-handler ref="customAccessDenied" />
+        <!-- remember-me -->
+        <security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
 
     </security:http>
 
