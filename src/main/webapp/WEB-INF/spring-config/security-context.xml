@@ -18,7 +18,7 @@
                              authentication-success-handler-ref="customLoginSuccess"/>
         <!-- 로그아웃 url -->
         <security:logout logout-url="/login/logout.do" invalidate-session="true"
-                         delete-cookies="remember-me,JSESSION_ID" success-handler-ref=""/>
+                         delete-cookies="remember-me,JSESSION_ID" />
 
         <!-- 20220820 디자인 resource 허용 -->
         <security:intercept-url pattern="/resources/**" access="permitAll" />

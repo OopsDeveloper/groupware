@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="/resources/css/styles.css" rel="stylesheet" type="text/css"/>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <div class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -27,10 +28,21 @@
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="#!" id="logoutButton">Logout</a></li>
                 </ul>
             </li>
+            <form id="logoutForm" action="/login/logout.do" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            </form>
         </ul>
     </nav>
 </div>
+<script>
+    $(document).ready(function(){
+        $("#logoutButton").on("click", function(e){
+            e.preventDefault();
+            $("#logoutForm").submit();
+        });
+    });
+</script>
 </html>
