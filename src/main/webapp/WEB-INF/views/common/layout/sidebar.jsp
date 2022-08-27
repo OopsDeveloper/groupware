@@ -4,12 +4,12 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <div class="sb-sidenav-menu-heading">Home</div>
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/main.do">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     홈으로
                 </a>
                 <div class="sb-sidenav-menu-heading">Notice</div>
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/notice.do">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     공지사항
                 </a>
@@ -21,8 +21,8 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">자료실</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">기업후기</a>
+                        <a class="nav-link" href="/refer.do">자료실</a>
+                        <a class="nav-link" href="/review.do">기업후기</a>
                     </nav>
                 </div>
                 <div class="sb-sidenav-menu-heading">Study Plan</div>
@@ -33,16 +33,16 @@
                 </a>
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">공부 방식</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">일정</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">진도율</a>
+                        <a class="nav-link" href="/method.do">공부 방식</a>
+                        <a class="nav-link" href="/calendar.do">일정</a>
+                        <a class="nav-link" href="/progress.do">진도율</a>
                     </nav>
                 </div>
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
-            Start Bootstrap
+            Study GroupWare
+            <div class="small">made by salary1000Study</div>
         </div>
     </nav>
 </div>
