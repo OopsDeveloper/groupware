@@ -9,7 +9,7 @@
                     홈으로
                 </a>
                 <div class="sb-sidenav-menu-heading">Notice</div>
-                <a class="nav-link" href="/notice.do">
+                <a class="nav-link" href="/notice/notice.do">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     공지사항
                 </a>
@@ -21,8 +21,8 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="/refer.do">자료실</a>
-                        <a class="nav-link" href="/review.do">기업후기</a>
+                        <a class="nav-link" href="/refer/refer.do">자료실</a>
+                        <a class="nav-link" href="/review/review.do">기업후기</a>
                     </nav>
                 </div>
                 <div class="sb-sidenav-menu-heading">Study Plan</div>
@@ -33,9 +33,9 @@
                 </a>
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="/method.do">공부 방식</a>
-                        <a class="nav-link" href="/calendar.do">일정</a>
-                        <a class="nav-link" href="/progress.do">진도율</a>
+                        <a class="nav-link" href="/method/method.do">공부 방식</a>
+                        <a class="nav-link" href="/calender/calendar.do">일정</a>
+                        <a class="nav-link" href="/progress/progress.do">진도율</a>
                     </nav>
                 </div>
             </div>
