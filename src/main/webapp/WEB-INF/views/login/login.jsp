@@ -45,7 +45,7 @@
                                 </form>
                             </div>
                             <div class="card-footer text-center py-3">
-                                <div class="small"><a href="register.html">회원가입으로 이동하기</a></div>
+                                <div class="small"><a href="/register/registerWrite.do">회원가입으로 이동하기</a></div>
                             </div>
                         </div>
                     </div>
