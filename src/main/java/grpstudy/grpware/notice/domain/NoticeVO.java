@@ -7,7 +7,7 @@ public class NoticeVO {
     String noticeTitle;
     String noticeContent;
     String noticeWriter;
-    Date registDt;
+    String registDt;
 
     public int getNoticeNo() {
         return noticeNo;
@@ -41,11 +41,11 @@ public class NoticeVO {
         this.noticeWriter = noticeWriter;
     }
 
-    public Date getRegistDt() {
+    public String getRegistDt() {
         return registDt;
     }
 
-    public void setRegistDt(Date registDt) {
+    public void setRegistDt(String registDt) {
         this.registDt = registDt;
     }
 

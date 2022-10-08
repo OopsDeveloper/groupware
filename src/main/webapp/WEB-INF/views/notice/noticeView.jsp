@@ -26,6 +26,7 @@
             </tr>
           </table>
           <button style="float: right" onclick="location.href='/notice/notice.do'">뒤로가기</button>
+          <button style="float: right" onclick="location.href='/notice/noticeModify.do?bno=${notice.noticeNo}'">수정하기</button>
         </div>
       </div>
     </div>
