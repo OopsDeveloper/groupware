@@ -3,14 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!--카멜표기법설정-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
     <!-- mapper에서 파라미터 값이 null로 들어간다면 주석 풀기
     <settings>
         <setting name="cacheEnabled" value="false"/>
         <setting name="jdbcTypeForNull" value="NULL"/>
     </settings>
-    -->
+-->
     <typeAliases>
-        <!--<typeAlias type="org.zerock.domain.BoardVO" alias="BoardVO"/>-->
-        <!--<package name="grp.study.groupware"/>-->
+<!--        <typeAlias type="grpstudy.grpware.*.domain.*VO" alias="*VO"/>-->
+<!--        <package name="grp.study.groupware.*.domain.*VO"/>-->
     </typeAliases>
 </configuration>

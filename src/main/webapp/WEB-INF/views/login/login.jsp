@@ -26,11 +26,11 @@
                             <div class="card-body">
                                 <form id="loginForm" action="/login" method="post">
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="inputEmail" type="email" name="username" />
+                                        <input class="form-control" id="inputEmail" type="email" name="username" placeholder="아이디를 입력하세요." />
                                         <label for="inputEmail">아이디를 입력하세요.</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="inputPassword" type="password" name="password" />
+                                        <input class="form-control" id="inputPassword" type="password" name="password" placeholder="비밀번호를 입력하세요."/>
                                         <label for="inputPassword">비밀번호를 입력하세요.</label>
                                     </div>
                                     <div class="form-check mb-3">
