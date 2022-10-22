@@ -35,4 +35,18 @@
         and   a.member_id = #{memberId}
     </select>
 
+    <select id="getMemberAll" resultMap="memberMap">
+        select tm.member_no
+             , tm.member_nm
+             , tm.member_id
+             , tm.member_mail
+             , tm.member_phone
+             , DATE_FORMAT(tm.member_birth,'%Y-%m-%d') AS member_birth
+             , CASE
+                   WHEN (ta.auth_auth like 'ROLE_MEMBER') THEN 'MEMBER'
+                   WHEN (ta.auth_auth like 'ROLE_ADMIN') THEN 'ADMIN'
+            END AS auth_auth
+        from oopsdev.tb_member tm LEFT OUTER JOIN tb_auth ta ON tm.member_id = ta.auth_id
+    </select>
+
 </mapper>

@@ -37,7 +37,6 @@
         DELETE FROM tb_notice WHERE notice_no = #{bno}
     </delete>
 
-
     <resultMap id="noticeMap" type="grpstudy.grpware.notice.domain.NoticeVO">
         <result property="noticeNo" column="notice_no" />
         <result property="noticeTitle" column="notice_title" />
