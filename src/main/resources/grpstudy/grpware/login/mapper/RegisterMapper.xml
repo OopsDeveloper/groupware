@@ -6,7 +6,7 @@
 
     <select id="registerMemberIdCheck" parameterType="String" resultType="grpstudy.grpware.login.domain.MemberVO" >
         select  *
-        from  oopsdev.tb_member
+        from  itstudygroup.tb_member
         where member_id = #{memberId}
     </select>
 
