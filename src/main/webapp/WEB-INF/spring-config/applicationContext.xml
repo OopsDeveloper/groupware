@@ -15,6 +15,7 @@
                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
                            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
                           ">
+
     <!-- applicationContext : view와 관련되지 않은 객체를 정의(Service, Repository(DAO), DB등 비즈니스 로직과 관련된 설정) -->
 
     <!-- DataSource 설정 (20220723) -->

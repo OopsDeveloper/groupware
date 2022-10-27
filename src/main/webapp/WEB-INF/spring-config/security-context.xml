@@ -23,7 +23,8 @@
         <!-- 20220820 디자인 resource 허용 -->
         <security:intercept-url pattern="/resources/**" access="permitAll" />
 
-        <security:intercept-url pattern="/main.do" access="hasRole('ROLE_MEMBER')" />
+        <!--<security:intercept-url pattern="/main.do" access="hasRole('ROLE_MEMBER')" />-->
+        <security:intercept-url pattern="/main.do" access="permitAll" />
 
         <!-- 접근 권한 없는 경우(아이디/비밀번호가 존재하나 권한이 없음) 이동 페이지 -->
         <security:access-denied-handler ref="customAccessDenied" />
