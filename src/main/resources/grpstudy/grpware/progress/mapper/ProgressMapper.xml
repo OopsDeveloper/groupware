@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="grpstudy.grpware.progress.mapper.ProgressMapper">
+    <select id="selectProgressRate" parameterType="hashmap" resultType="hashmap">
+        SELECT tp.progress_no
+             , tp.member_no
+             , progress_rate
+             , DATE_FORMAT(regist_dt,'%Y-%m-%d') as regist_dt
+             , progress_content
+             , progress_title
+             , progress_participant
+             , DATE_FORMAT(study_period,'%Y-%m-%d') as study_period
+        FROM tb_progress tp
+            INNER JOIN tb_member tm
+                ON tp.member_no = tm.member_no
+    </select>
+</mapper>

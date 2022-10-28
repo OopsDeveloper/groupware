@@ -67,7 +67,61 @@
         </div>
     </main>
 </div>
+<%--<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>--%>
+<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <script>
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+    $(function () {
+        console.log("hi")
+        selectProgressChart();
+    });
+    function selectProgressChart() {
+        console.log("ajax function enter")
+        //debugger;
+        $.ajax({
+            url : "/progress/selectProgressRate.do",
+            type : "post",
+            dataType : "json",
+            data : {},
+            beforeSend : function(xhr){
+                xhr.setRequestHeader(header, token);
+            },
+            async : true,
+            success : function(data){
+                console.log(data)
+                /*
+                if(data.status == "SUCCESS"){
+                    if(chart_type == 'radar'){
+                        let dataSetArr = radarGraphDataSet(data.result_list);
+
+                        radarGraphView(dataSetArr);
+
+                    }else if(chart_type == 'line'){
+                        let dataSetArr = barGraphDataSet(data.result_list);
+
+                        lineGraphView(dataSetArr );
+                    }else if(chart_type == 'vertical_bargraph'){
+
+                        let dataSetArr = barGraphDataSet(data.result_list);
+
+                        verticalBarGraphView(dataSetArr);
+
+                    }else if(chart_type == 'width_bargraph'){
+
+                        let dataSetArr = barGraphDataSet(data.result_list);
+
+                        widthBarGraphView(dataSetArr);
+                    }
+                }else{
+                    alert(data.statusDescription);
+                }
+                */
+            }
+        })
+    }
+
     // Set new default font family and font color to mimic Bootstrap's default styling
     Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#292b2c';
