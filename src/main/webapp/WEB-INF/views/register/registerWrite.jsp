@@ -26,44 +26,70 @@
         let memberPwCheckFlag = false;
 
         $(document).ready(function(){
+            memberIdCheckMethod();
+            passwordCheckMethod();
+            memberPhoneCheck();
+        });
+
+        function memberIdCheckMethod () {
             //아이디입력이벤트확인
             $("#memberId").change(function(){
                 memberIdCheckFlag = false;
             });
-
             //아이디중복확인메서드
             $("#memberIdCheck").click(function(){
                 memberIdCheck();
             });
-
-            //아이디중복확인
-            function memberIdCheck(){
-                let $memberId = $("#memberId").val();
-                if($memberId.trim() == ""){
-                    alert("아이디를 입력해주세요.");
-                    return false;
-                }
-                let param = { "memberId" : $memberId };
-                $.ajax({
-                    type: "GET",
-                    url: "/register/memberIdCheck.do",
-                    // headers : {"Content-Type":"application/json"},
-                    data: param,
-                    // dataType: "text",
-                    success : function(memberVo){
-                        if(!memberVo){
-                            alert("사용가능한 아이디입니다.");
-                            memberIdCheckFlag = true;
-                        } else {
-                            alert("이미 아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-                        }
-                    },
-                    error : function(error){
-                        console.log(error);
-                    }
-                });
+        }
+        //아이디중복확인
+        function memberIdCheck(){
+            let $memberId = $("#memberId").val();
+            if($memberId.trim() == ""){
+                alert("아이디를 입력해주세요.");
+                return false;
             }
-        });
+            let param = { "memberId" : $memberId };
+            $.ajax({
+                type: "GET",
+                url: "/register/memberIdCheck.do",
+                // headers : {"Content-Type":"application/json"},
+                data: param,
+                // dataType: "text",
+                success : function(memberVo){
+                    if(!memberVo){
+                        alert("사용가능한 아이디입니다.");
+                        memberIdCheckFlag = true;
+                    } else {
+                        alert("이미 아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+                    }
+                },
+                error : function(error){
+                    console.log(error);
+                }
+            });
+        }
+        //패스워드재확인
+        function passwordCheckMethod(){
+            let $lableText = $("div.form-floating label[for='memberPwCheck']");
+            $("#memberPwCheck").keyup(function(){
+                const $memberPw = $("#memberPw").val();
+                if($memberPw == $(this).val()){
+                    $lableText.text("비밀번호확인 (비밀번호가 일치합니다.)")
+                    memberPwCheckFlag = true;
+                }else{
+                    $lableText.text("비밀번호확인 (비밀번호가 불일치합니다.)")
+                    memberPwCheckFlag = false;
+                }
+            });
+        }
+        //휴대폰번호정규식적용
+        function memberPhoneCheck(){
+            $("#memberPhone").keyup(function(){
+                // let $thisValue = $(this).val().replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/\-{1,2}$/g, "");
+                let $thisValue = $(this).val().replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+                $("#memberPhone").val($thisValue);
+            });
+        }
     </script>
 </head>
 <body class="bg-primary">
