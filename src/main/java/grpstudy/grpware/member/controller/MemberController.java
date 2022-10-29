@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -18,6 +20,7 @@ public class MemberController {
     @RequestMapping("/member.do")
     public String notice(Model model) {
         List<MemberVO> memberList = memberService.getMemberAll();
+
         model.addAttribute("memberList", memberList);
 
         return "member/member";
