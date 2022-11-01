@@ -1,8 +1,25 @@
 $(document).ready(function (){
-    $("#attY").click(function (){
-        alert("참석했당");
+    let token = $("meta[name='_csrf']").attr("content");
+    let header = $("meta[name='_csrf_header']").attr("content");
+
+    $("#attY").on("click",function (){
+        $.ajax({
+            type:"POST",
+            url:"/attend/attend.do",
+            data:{"data":"Y"},
+            dataType:"json",
+            beforeSend : function(xhr){
+                xhr.setRequestHeader(header, token);
+            },
+            success:function (result){
+                console.log(result);
+            },
+            error:function (error){
+
+            }
+        });
     });
-    $("#attN").click(function (){
+    $("#attN").on("click",function (){
         if ($("#attContent").val() === "") {
             alert("불참 사유를 입력해주세요!");
         } else {
