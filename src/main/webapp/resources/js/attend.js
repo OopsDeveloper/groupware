@@ -7,7 +7,6 @@ $(document).ready(function (){
             type:"POST",
             url:"/attend/attend.do",
             data:{"data":"Y"},
-            dataType:"json",
             beforeSend : function(xhr){
                 xhr.setRequestHeader(header, token);
             },
