@@ -3,7 +3,10 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="my-5">진도율 상세 페이지</h1>
+            <h1 class="mt-4">Progress Detail Page</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">진도율 상세 페이지</li>
+            </ol>
 
             <%--상세 진도 표시--%>
             <div class="card mb-4">
