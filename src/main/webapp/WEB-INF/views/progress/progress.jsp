@@ -65,18 +65,24 @@
                 </div>
             </div>
         </div>
+        <div>
+            <input type="button" onclick="location.href='/progress/progressDetail.do'" value="진도율상세임시">
+        </div>
     </main>
 </div>
+
 <%--<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>--%>
 <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
 <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <script>
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
+
     $(function () {
         console.log("hi")
         selectProgressChart();
     });
+
     function selectProgressChart() {
         console.log("ajax function enter")
         //debugger;
