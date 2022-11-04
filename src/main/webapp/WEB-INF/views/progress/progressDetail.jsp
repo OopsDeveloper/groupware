@@ -76,32 +76,7 @@
         </div>
     </footer>
 </div>
-<style>
-    .progress-bar {
-        position: relative;
-        height: 40px;
-        border: 1px solid #000000;
-        background-color: white;
-    }
 
-    .progress-bar-fill {
-        height: 100%;
-        background: #43b44c;
-        transition: width 0.5s;
-    }
-
-    .progress-bar-value {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        color: black;
-    }
-</style>
 <script>
     class ProgressBar {
         constructor(element, initialValue = 0) {
