@@ -7332,7 +7332,7 @@ textarea.form-control-lg {
 }
 
 .mt-4 {
-    margin-top: 1.5rem !important;
+    margin-top: 1.7rem !important;
 }
 
 .mt-5 {
@@ -11337,7 +11337,7 @@ body {
     justify-content: space-between;
     min-width: 0;
     flex-grow: 1;
-    min-height: calc(100vh - 56px);
+    min-height: calc(100vh);
     margin-left: -225px;
 }
 
@@ -11391,7 +11391,7 @@ body {
     overflow-y: auto;
 }
 #layoutSidenav #layoutSidenav_content {
-    top: 56px;
+    top: 44px;
 }
 
 #layoutError {
@@ -11435,7 +11435,7 @@ body {
 .sb-sidenav {
     display: flex;
     flex-direction: column;
-    height: 104.5%;
+    height: 100%;
     flex-wrap: nowrap;
 }
 .sb-sidenav .sb-sidenav-menu {
