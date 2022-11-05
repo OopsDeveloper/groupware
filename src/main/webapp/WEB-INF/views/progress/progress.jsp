@@ -7,6 +7,15 @@
                 <li class="breadcrumb-item active">스터디 진도율</li>
             </ol>
             <div class="row">
+                <div class="col-xl-6">
+                    <input type="text" class="progress-input-underline" placeholder="진행중" readonly/>
+                </div>
+                <div class="col-xl-6">
+                    <input type="text" class="progress-input-underline" placeholder="출석률" readonly/>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
                         <div class="card-body">Progress Rate Details <i style="font-size: 10px; color: #e5e6e7">(진도율 상세)</i></div>
