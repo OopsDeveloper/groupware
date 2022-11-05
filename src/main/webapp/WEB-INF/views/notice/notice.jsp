@@ -3,7 +3,10 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">공지사항</h1>
+            <h1 class="mt-4">Study Notice</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">스터디 공지사항</li>
+            </ol>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -35,13 +38,6 @@
             </div>
         </div>
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-
-            </div>
-        </div>
-    </footer>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/resources/js/scripts.js"></script>

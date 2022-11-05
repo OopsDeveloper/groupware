@@ -47,8 +47,6 @@
                 <div class="collapse" id="adminPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="/member/member.do">회원 관리</a>
-                    </nav>
-                    <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="/place/place.do">장소 선택</a>
                     </nav>
                 </div>
