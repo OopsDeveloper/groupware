@@ -1,4 +1,4 @@
-package grpstudy.grpware.security;
+package grpstudy.grpware.auth.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -13,13 +13,9 @@ import java.util.List;
 public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth) throws IOException, ServletException {
-        System.out.println("Login Success");
-
         List<String> roleNames = new ArrayList<>();
 
-        auth.getAuthorities().forEach(autority -> {
-            roleNames.add(autority.getAuthority());
-        });
+        auth.getAuthorities().forEach(autority -> { roleNames.add(autority.getAuthority()); });
 
         System.out.println("roleNames : " + roleNames);
 
@@ -28,6 +24,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
             return;
         }
 
-        response.sendRedirect("/");
+//        response.sendRedirect("/auth/login.do?noMember=true");
+        response.sendRedirect("/auth/login.do");
     }
 }

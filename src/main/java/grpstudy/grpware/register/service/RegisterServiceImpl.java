@@ -1,6 +1,6 @@
 package grpstudy.grpware.register.service;
 
-import grpstudy.grpware.login.domain.MemberVO;
+import grpstudy.grpware.auth.domain.MemberVO;
 import grpstudy.grpware.register.mapper.RegisterMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

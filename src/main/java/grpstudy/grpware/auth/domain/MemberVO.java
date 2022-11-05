@@ -1,11 +1,13 @@
-package grpstudy.grpware.login.domain;
+package grpstudy.grpware.auth.domain;
 
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
 import java.util.List;
 
 @Data
+@Alias("memberVO")
 public class MemberVO {
     private String memberNo;
     private String memberNm;

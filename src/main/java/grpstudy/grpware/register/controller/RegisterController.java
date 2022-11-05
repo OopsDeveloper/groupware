@@ -1,8 +1,7 @@
 package grpstudy.grpware.register.controller;
 
-import grpstudy.grpware.login.domain.MemberVO;
+import grpstudy.grpware.auth.domain.MemberVO;
 import grpstudy.grpware.register.service.RegisterService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

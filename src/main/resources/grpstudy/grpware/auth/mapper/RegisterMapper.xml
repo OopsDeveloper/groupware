@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="grpstudy.grpware.register.mapper.RegisterMapper">
 
-    <select id="registerMemberIdCheck" parameterType="String" resultType="grpstudy.grpware.login.domain.MemberVO" >
+    <select id="registerMemberIdCheck" parameterType="String" resultType="memberVO" >
         select  *
         from  tb_member
         where member_id = #{memberId}

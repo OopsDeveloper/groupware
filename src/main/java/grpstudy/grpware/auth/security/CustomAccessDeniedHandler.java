@@ -1,4 +1,4 @@
-package grpstudy.grpware.security;
+package grpstudy.grpware.auth.security;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
@@ -14,6 +14,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
         System.out.println("Access Denied Handler");
         System.out.println("Redirect.........");
 
-        response.sendRedirect("/login/accessError.do");
+//        response.sendRedirect("/auth/login.do?accessDenided=true");
+        response.sendRedirect("/auth/login.do");
     }
 }

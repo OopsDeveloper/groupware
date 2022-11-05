@@ -6,30 +6,30 @@
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
        ">
-    <!--빈(Bean) 설정-->
-    <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-    <bean id="customAccessDenied" class="grpstudy.grpware.security.CustomAccessDeniedHandler" />
-    <bean id="customUserDetailService" class="grpstudy.grpware.security.CustomUserDetailService" />
-    <bean id="customLoginSuccess" class="grpstudy.grpware.security.CustomLoginSuccessHandler" />
+    <security:http auto-config="false" use-expressions="true">
 
-    <security:http>
-        <!-- 로그인 url -->
-        <security:form-login login-page="/login/login.do"
-                             authentication-success-handler-ref="customLoginSuccess"/>
-        <!-- 로그아웃 url -->
-        <security:logout logout-url="/login/logout.do" invalidate-session="true"
-                         delete-cookies="remember-me,JSESSION_ID" />
+        <security:form-login
+                login-page="/auth/login.do"
+                login-processing-url="/login"
+                authentication-success-handler-ref="customLoginSuccess"
+                authentication-failure-url="/auth/login.do?error=true"
+        />
+        <security:logout
+                logout-url="/login/logout.do"
+                logout-success-url="/auth/login.do?logout=true"
+                invalidate-session="true"
+                delete-cookies="remember-me,JSESSION_ID" />
 
-        <!-- 20220820 디자인 resource 허용 -->
-        <security:intercept-url pattern="/resources/**" access="permitAll" />
+        <security:intercept-url pattern="/resources/**" access="permitAll" /> <!-- 정적 리소스 모두 접근 허용 -->
+        <security:intercept-url pattern="/auth/login.do" access="permitAll" />
+        <security:intercept-url pattern="/" access="permitAll" />
+        <security:intercept-url pattern="/index.do" access="permitAll" />
+        <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" /> <!-- 관리자만 접근 -->
+        <security:intercept-url pattern="/**" access="isAuthenticated()" /> <!-- 나머지는 인가된 접근만 허용 -->
 
-        <!--<security:intercept-url pattern="/main.do" access="hasRole('ROLE_MEMBER')" />-->
-        <security:intercept-url pattern="/main.do" access="permitAll" />
-
-        <!-- 접근 권한 없는 경우(아이디/비밀번호가 존재하나 권한이 없음) 이동 페이지 -->
-        <security:access-denied-handler ref="customAccessDenied" />
-        <!-- remember-me -->
         <security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
+
+        <security:csrf disabled="false"/>
 
     </security:http>
 
@@ -37,8 +37,13 @@
         <security:authentication-provider user-service-ref="customUserDetailService">
             <!-- 인코딩 -->
             <security:password-encoder ref="bcryptPasswordEncoder" />
-
         </security:authentication-provider>
-
     </security:authentication-manager>
+
+
+    <!--빈(Bean) 설정-->
+    <bean id="customUserDetailService" class="grpstudy.grpware.auth.security.CustomUserDetailService" />
+    <bean id="customLoginSuccess" class="grpstudy.grpware.auth.security.CustomLoginSuccessHandler" />
+    <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+    <bean id="customAccessDenied" class="grpstudy.grpware.auth.security.CustomAccessDeniedHandler" />
 </beans>

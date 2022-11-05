@@ -1,6 +1,6 @@
 package grpstudy.grpware.member.controller;
 
-import grpstudy.grpware.login.domain.MemberVO;
+import grpstudy.grpware.auth.domain.MemberVO;
 import grpstudy.grpware.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

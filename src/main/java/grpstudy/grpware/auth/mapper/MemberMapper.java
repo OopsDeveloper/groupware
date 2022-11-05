@@ -1,6 +1,6 @@
-package grpstudy.grpware.login.mapper;
+package grpstudy.grpware.auth.mapper;
 
-import grpstudy.grpware.login.domain.MemberVO;
+import grpstudy.grpware.auth.domain.MemberVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

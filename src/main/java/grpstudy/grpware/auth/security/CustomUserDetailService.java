@@ -1,8 +1,8 @@
-package grpstudy.grpware.security;
+package grpstudy.grpware.auth.security;
 
-import grpstudy.grpware.login.domain.CustomUser;
-import grpstudy.grpware.login.domain.MemberVO;
-import grpstudy.grpware.login.mapper.MemberMapper;
+import grpstudy.grpware.auth.domain.CustomUser;
+import grpstudy.grpware.auth.domain.MemberVO;
+import grpstudy.grpware.auth.mapper.MemberMapper;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public class CustomUserDetailService implements UserDetailsService {
-    @Setter(onMethod_ = @Autowired)
+    @Autowired
     private MemberMapper mapper;
 
     @Override

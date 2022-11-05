@@ -2,12 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title></title>
+    <script src="resources/js/jquery/jquery-3.6.1.min.js"></script>
+    <script>
+        function gotoMain(){
+            location.href = "/auth/login.do";
+        }
+    </script>
 </head>
-<body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+<body onload="gotoMain()">
 </body>
 </html>
