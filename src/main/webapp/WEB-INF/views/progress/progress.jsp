@@ -6,15 +6,24 @@
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">스터디 진도율</li>
             </ol>
-            <div class="row">
+            <div class="row progress-align">
                 <div class="col-xl-6">
-                    <input type="text" class="progress-input-underline" placeholder="진행중" readonly/>
+                    <input type="text" class="progress-input-underline progress-color-red" placeholder="진행중" value="진행중" readonly/>
                 </div>
                 <div class="col-xl-6">
-                    <input type="text" class="progress-input-underline" placeholder="출석률" readonly/>
+                    <input type="text" class="progress-input-underline progress-color-blue" placeholder="출석률" value="출석률" readonly/>
+                </div>
+            </div>
+            <div class="row progress-align">
+                <div class="col-xl-6">
+                    <input type="text" class="progress-input-oval progress-bg-color-red progress-color-white" placeholder="75%" value="75%" readonly/>
+                </div>
+                <div class="col-xl-6">
+                    <input type="text" class="progress-input-oval progress-bg-color-blue progress-color-white" placeholder="100%" value="100%" readonly/>
                 </div>
             </div>
             <br/>
+            <%--
             <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
@@ -53,12 +62,13 @@
                     </div>
                 </div>
             </div>
+           --%>
             <div class="row">
                 <div class="col-xl-6">
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-chart-area me-1"></i>
-                            Progress Attainment Rate <i class="breadcrumb-item active" style="font-size: 10px;">(진도 달성률)</i>
+                            Progress Rate <i class="breadcrumb-item active" style="font-size: 10px;">(진행 과정 진도율)</i>
                         </div>
                         <div class="card-body"><canvas id="chart1" width="100%" height="40"></canvas></div>
                     </div>
@@ -67,7 +77,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-chart-bar me-1"></i>
-                            Attendance Rate <i class="breadcrumb-item active" style="font-size: 10px;">(출석률)</i>
+                            The Overall Attendance Rate <i class="breadcrumb-item active" style="font-size: 10px;">(전체 출석률)</i>
                         </div>
                         <div class="card-body"><canvas id="chart2" width="100%" height="40"></canvas></div>
                     </div>

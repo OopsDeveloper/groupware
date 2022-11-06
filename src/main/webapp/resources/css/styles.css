@@ -11716,7 +11716,6 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11730,8 +11729,48 @@ body {
     border-left-width: 0;
     border-right-width: 0;
     border-bottom-width: 1;
+    text-align: center;
+    width: 200px;
 }
 
 .progress-input-underline:focus {
     outline: none;
 }
+
+.progress-input-oval {
+    width: 200px;
+    height: 32px;
+    font-size: 1em;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    background-color: #dbdfea;
+    text-align: center;
+}
+
+.progress-align {
+    padding-left: 20%;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.progress-color-red {
+    color: #ef6f6f;
+}
+.progress-color-blue {
+    color: #4a6ee5;
+}
+.progress-color-white {
+    color: #ffffff;
+}
+
+.progress-bg-color-red {
+    background-color: #ef6f6f;
+}
+.progress-bg-color-blue {
+    background-color: #4a6ee5;
+}
+
+
