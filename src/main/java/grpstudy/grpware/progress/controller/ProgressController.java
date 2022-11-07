@@ -27,7 +27,8 @@ public class ProgressController {
     @ResponseBody
     @RequestMapping("/selectProgressRate.do")
     public Map<String,Object> selectProgressRate() throws Exception {
-        Map<String,Object> resultObj = progressService.selectProgressRate();
+        //Map<String,Object> resultObj = progressService.selectProgressRate();
+        Map<String,Object> resultObj = null;
         return resultObj;
     }
 
