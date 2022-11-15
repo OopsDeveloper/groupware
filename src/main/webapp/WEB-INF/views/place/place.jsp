@@ -16,7 +16,7 @@
                         <div class="option">
                             <div>
                                 <form onsubmit="searchPlaces(); return false;">
-                                    키워드 : <input type="text" value="탄방동 할리스" id="keyword" size="15">
+                                    키워드 : <input type="text" value="" id="keyword" size="15">
                                     <button type="submit">검색하기</button>
                                 </form>
                             </div>
@@ -28,12 +28,14 @@
                 </div>
             </div>
             <div>
-                <input type="text" placeholder="장소를 클릭해주세요!" readonly>
+                <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+                <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
+                <input type="text" id="cPlace" placeholder="장소를 클릭해주세요!" value="" readonly>
                 <input type="hidden" id="addressName" value="">
                 <input type="hidden" id="placeName" value="">
                 <input type="hidden" id="lat" value="">
                 <input type="hidden" id="lon" value="">
-                <button>장소 저장</button>
+                <button type="button" id="placeSubmit">장소 저장</button>
             </div>
         </div>
     </main>
