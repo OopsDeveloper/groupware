@@ -17,4 +17,10 @@ public class PlaceServiceImpl implements PlaceService{
 
         return cnt;
     }
+
+    @Override
+    public PlaceVO getPlace() {
+        PlaceVO vo = placeMapper.getPlace();
+        return vo;
+    }
 }

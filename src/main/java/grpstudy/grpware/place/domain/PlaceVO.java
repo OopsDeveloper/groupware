@@ -4,50 +4,50 @@ import lombok.Data;
 
 @Data
 public class PlaceVO {
-    float x;
-    float y;
-    String address;
-    String name;
+    float placeX;
+    float placeY;
+    String placeAddress;
+    String placeName;
 
-    public float getX() {
-        return x;
+    public float getPlaceX() {
+        return placeX;
     }
 
-    public void setX(float x) {
-        this.x = x;
+    public void setPlaceX(float placeX) {
+        this.placeX = placeX;
     }
 
-    public float getY() {
-        return y;
+    public float getPlaceY() {
+        return placeY;
     }
 
-    public void setY(float y) {
-        this.y = y;
+    public void setPlaceY(float placeY) {
+        this.placeY = placeY;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPlaceAddress() {
+        return placeAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPlaceAddress(String placeAddress) {
+        this.placeAddress = placeAddress;
     }
 
-    public String getName() {
-        return name;
+    public String getPlaceName() {
+        return placeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
     }
 
     @Override
     public String toString() {
-        return "placeVO{" +
-                "x=" + x +
-                ", y=" + y +
-                ", address='" + address + '\'' +
-                ", name='" + name + '\'' +
+        return "PlaceVO{" +
+                "placeX=" + placeX +
+                ", placeY=" + placeY +
+                ", placeAddress='" + placeAddress + '\'' +
+                ", placeName='" + placeName + '\'' +
                 '}';
     }
 }

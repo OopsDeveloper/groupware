@@ -4,9 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="grpstudy.grpware.place.mapper.PlaceMapper">
 
+    <select id="getPlace" resultType="PlaceVO">
+        select tp.place_x
+             , tp.place_y
+             , tp.place_address
+             , tp.place_name
+        from tb_place tp
+        where place_no = (select max(tn.place_no) from tb_place tn);
+    </select>
+
     <insert id="setPlace" parameterType="PlaceVO">
         INSERT INTO tb_place (place_x, place_y, place_address, place_name)
-         VALUE (#{x}, #{y}, #{address}, #{name});
+            VALUE (#{placeX}, #{placeY}, #{placeAddress}, #{placeName})
     </insert>
 
 </mapper>

@@ -8,7 +8,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    장소선택 페이지 입니다.
+                    장소선택 페이지 입니다.[${place.placeName}]
                 </div>
                 <div class="map_wrap">
                     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -16,7 +16,7 @@
                         <div class="option">
                             <div>
                                 <form onsubmit="searchPlaces(); return false;">
-                                    키워드 : <input type="text" value="" id="keyword" size="15">
+                                    키워드 : <input type="text" value="${place.placeName}" id="keyword" size="15">
                                     <button type="submit">검색하기</button>
                                 </form>
                             </div>
@@ -35,7 +35,7 @@
                 <input type="hidden" id="placeName" value="">
                 <input type="hidden" id="lat" value="">
                 <input type="hidden" id="lon" value="">
-                <button type="button" id="placeSubmit">장소 저장</button>
+                <button type="button" id="placeSubmit" onclick="savePlcae()">장소 저장</button>
             </div>
         </div>
     </main>

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlaceMapper {
     int setPlace(PlaceVO vo);
+    PlaceVO getPlace();
 }
