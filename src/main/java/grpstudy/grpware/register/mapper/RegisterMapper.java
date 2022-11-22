@@ -5,5 +5,9 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface RegisterMapper {
-    MemberVO registerMemberIdCheck(String memberId);
+    int registerMemberIdCheck(String memberId);
+
+    int registerMember(MemberVO memberVO);
+
+    int registerMemberAuth(MemberVO memberVO);
 }

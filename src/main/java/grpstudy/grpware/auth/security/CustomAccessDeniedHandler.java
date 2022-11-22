@@ -14,7 +14,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
         System.out.println("Access Denied Handler");
         System.out.println("Redirect.........");
 
-//        response.sendRedirect("/auth/login.do?accessDenided=true");
-        response.sendRedirect("/auth/login.do");
+        response.sendRedirect("/auth/login.do?accessDenied=true");
+//        response.sendRedirect("/auth/login.do");
     }
 }

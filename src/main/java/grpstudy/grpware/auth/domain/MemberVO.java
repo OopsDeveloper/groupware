@@ -2,85 +2,78 @@ package grpstudy.grpware.auth.domain;
 
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 @Data
 @Alias("memberVO")
-public class MemberVO {
+public class MemberVO implements UserDetails {
     private String memberNo;
     private String memberNm;
     private String memberId;
     private String memberPw;
-    private Date memberBirth;
+    private String memberBirth;
     private String memberMail;
     private String memberPhone;
     //private Date registDt;
 
+    /**로그인 IP*/
+    private String loginIpAddress;
+    /**request헤더문자열*/
+    private String headers;
+    /**인증정보*/
     private List<AuthVO> authList;
 
-    public String getMemberNo() {
-        return memberNo;
+//    public List<String> getAuthList(){
+//        List<String> list = new ArrayList<>();
+//        this.authList.stream().forEach(authVO -> list.add(authVO.getAuthAuth()));
+//
+//        return list;
+//    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        this.authList.stream().forEach(authVO -> {
+            authorities.add(new SimpleGrantedAuthority(authVO.getAuthAuth()));
+        });
+        return authorities;
     }
 
-    public void setMemberNo(String memberNo) {
-        this.memberNo = memberNo;
+    @Override
+    public String getPassword() {
+        return this.memberPw;
     }
 
-    public String getMemberNm() {
-        return memberNm;
+    @Override
+    public String getUsername() {
+        return this.memberId;
     }
 
-    public void setMemberNm(String memberNm) {
-        this.memberNm = memberNm;
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
     }
 
-    public String getMemberId() {
-        return memberId;
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
     }
 
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
     }
 
-    public String getMemberPw() {
-        return memberPw;
+    @Override
+    public boolean isEnabled() {
+        return false;
     }
 
-    public void setMemberPw(String memberPw) {
-        this.memberPw = memberPw;
-    }
-
-    public Date getMemberBirth() {
-        return memberBirth;
-    }
-
-    public void setMemberBirth(Date memberBirth) {
-        this.memberBirth = memberBirth;
-    }
-
-    public String getMemberMail() {
-        return memberMail;
-    }
-
-    public void setMemberMail(String memberMail) {
-        this.memberMail = memberMail;
-    }
-
-    public String getMemberPhone() {
-        return memberPhone;
-    }
-
-    public void setMemberPhone(String memberPhone) {
-        this.memberPhone = memberPhone;
-    }
-
-    public List<AuthVO> getAuthList() {
-        return authList;
-    }
-
-    public void setAuthList(List<AuthVO> authList) {
-        this.authList = authList;
-    }
 }

@@ -35,7 +35,7 @@
                     <li><a class="dropdown-item" href="#!" id="logoutButton">Logout</a></li>
                 </ul>
             </li>
-            <form id="logoutForm" action="/login/logout.do" method="post">
+            <form id="logoutForm" action="/auth/logout.do" method="post">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             </form>
         </ul>

@@ -18,11 +18,34 @@
     <script src="/resources/js/scripts.js"></script>
     <script src="/resources/js/jquery/jquery-3.6.1.min.js"></script>
     <script>
-        $(document).ready(function(){
+        function joinMemberProcess(){
+            let $memberId = $("#memberId").val();
+            if($memberId != ""){
+                alert("회원가입이 완료되었습니다. 로그인을 진행해주세요.");
+                $("#username").val($memberId);
+                return;
+            }
+        }
+        let process = {
+            loginSubmit : function(){
+                let $username = $("#username").val();
+                let $password = $("#password").val();
+                if( $username != null && $password != null ){
+                    $("#loginForm").submit();
+                } else {
+                    alert("아이디 혹은 비밀번호를 입력해주세요.");
+                }
+            },
+        },
+        eventbind = function() {
             $("#loginButton").on("click", function(e){
                 e.preventDefault();
-                $("#loginForm").submit();
+                process.loginSubmit();
             });
+        }
+        $(document).ready(function(){
+            eventbind();
+
         });
     </script>
 </head>
@@ -36,13 +59,11 @@
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                             <div class="card-body">
+                                <input type="hidden" id="memberId" value="${memberId}">
                                 <form id="loginForm" action="/login" method="post">
-                                    <c:if test="${param.error != null}">
-                                        <p>아이디 또는 비밀번호를 다시 입력해주세요.</p>
-                                    </c:if>
-                                    <c:if test="${param.logout != null}">
-                                        <p>로그아웃 되었습니다.</p>
-                                    </c:if>
+                                        <p><c:out value="${error}" /></p>
+                                        <p><c:out value="${logout}" /></p>
+                                        <p><c:out value="${accessDenied}" /></p>
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="username" type="text" name="username" placeholder="아이디를 입력하세요." />
                                         <label for="username">아이디를 입력하세요.</label>

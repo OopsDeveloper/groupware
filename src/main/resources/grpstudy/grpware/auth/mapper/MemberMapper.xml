@@ -33,6 +33,9 @@
         from  tb_member a, tb_auth b
         where a.member_id = b.auth_id
         and   a.member_id = #{memberId}
+        <if test="@grpstudy.grpware.common.utils.MapperUtil@isNotBlank(userPw)">
+            AND a.member_pw = #{userPw}
+        </if>
     </select>
 
     <select id="getMemberAll" resultMap="memberMap">
@@ -48,5 +51,6 @@
             END AS auth_auth
         from tb_member tm LEFT OUTER JOIN tb_auth ta ON tm.member_id = ta.auth_id
     </select>
+
 
 </mapper>
