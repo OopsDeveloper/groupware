@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="form-check mb-3">
                                         <input class="form-check-input" id="remember-me" type="checkbox" name="remember-me"/>
-                                        <label class="form-check-label" for="remember-me">아이디 기억하기</label>
+                                        <label class="form-check-label" for="remember-me">자동로그인</label>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                         <a class="small" href="password.html">비밀번호를 잊어버리셨나요?</a>
