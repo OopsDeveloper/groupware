@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="grpstudy.grpware.register.mapper.ReviewMapper">
+
+        <!--기업 후기 메인화면-->
+        <select id = "getReviewAll" parameterType="hashMap" resultType="ReviewVO">
+            SELECT
+                   rev_no
+                 , rev_title
+                 , rev_content
+                 , rev_writer
+                 , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
+            FROM
+                  itstudygroup.tb_review
+        </select>
+
+        <!-- 기업 후기 상세화면 -->
+        <select id = "getReviewDetail" parameterType="String" resultType="ReviewVO">
+            SELECT
+                   rev_no
+                 , rev_title
+                 , rev_content
+                 , rev_writer
+                 , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
+            FROM
+                itstudygroup.tb_review
+            WHERE
+                rev_no = #{revno}
+        </select>
+
+        <!-- 기업 후기 등록 -->
+        <insert id = "setReview" parameterType="ReviewVO">
+            INSERT INTO
+                itstudygroup.tb_review
+                (rev_title, rev_content, rev_writer, regist_dt)
+            VALUES
+                (#{reviewTitle}, #{reviewContent}, #{reviewWriter}, #{registDt})
+        </insert>
+
+        <!-- 기업 후기 수정 -->
+        <update id = "updateReview" parameterType="ReviewVO">
+            UPDATE
+                itstudygroup.tb_review
+            SET
+                review_title = #{reviewTitle}
+              , review_content = #{reviewContent}
+            WHERE
+                review_no = #{reviewNo}
+        </update>
+
+        <!-- 기업 후기 삭제 -->
+        <delete id = "deleteReveiw" parameterType = "String">
+            DELETE
+            FROM
+                itstudygroup.tb_review
+            WHERE
+                review_no = #{reviewNo}
+        </delete>
+
+</mapper>
