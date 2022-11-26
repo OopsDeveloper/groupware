@@ -22,7 +22,9 @@ public class RegisterController {
     @PostMapping("/registerWrite.do")
     public String registerMember(MemberVO memberVO, RedirectAttributes redirectAttributes){
         boolean successProcess = registerService.registerMember(memberVO);
-        redirectAttributes.addFlashAttribute("memberId", memberVO.getMemberId());
+        if(successProcess){
+            redirectAttributes.addFlashAttribute("memberId", memberVO.getMemberId());
+        }
         return "redirect:/auth/login.do";
     }
 

@@ -46,6 +46,8 @@
         $(document).ready(function(){
             eventbind();
 
+            //회원가입 완료 시 아이디 띄우기
+            joinMemberProcess();
         });
     </script>
 </head>

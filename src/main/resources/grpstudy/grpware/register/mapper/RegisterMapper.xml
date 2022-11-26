@@ -24,7 +24,7 @@
             ,#{memberNm}
             ,#{memberMail}
             ,#{memberPhone}
-            ,date_format(#{member_birth}, '%Y-%m-%d %H:%i:%s')
+            ,date_format(#{memberBirth}, '%Y-%m-%d')
         )
     </insert>
     

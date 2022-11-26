@@ -21,21 +21,13 @@ public class MemberVO implements UserDetails {
     private String memberBirth;
     private String memberMail;
     private String memberPhone;
-    //private Date registDt;
 
+    /**인증정보*/
+    private List<AuthVO> authList;
     /**로그인 IP*/
     private String loginIpAddress;
     /**request헤더문자열*/
     private String headers;
-    /**인증정보*/
-    private List<AuthVO> authList;
-
-//    public List<String> getAuthList(){
-//        List<String> list = new ArrayList<>();
-//        this.authList.stream().forEach(authVO -> list.add(authVO.getAuthAuth()));
-//
-//        return list;
-//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -75,5 +67,4 @@ public class MemberVO implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }
