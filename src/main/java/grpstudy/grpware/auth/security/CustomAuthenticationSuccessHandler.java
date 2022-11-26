@@ -30,35 +30,28 @@ public class CustomAuthenticationSuccessHandler extends SavedRequestAwareAuthent
     MemberService memberService;
 
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-        MemberVO details = new MemberVO();
-
+        String userId = authentication.getName();
         HashParameterMap params = new HashParameterMap();
 
-        //접근 IP 조회
+        //사용자 정보
+        params.setString("memberId", userId);
+        MemberVO details = this.memberService.read(params.getParameterMap());
+
+        //접근 IP 조회 및 저장
         String userIpAddress = httpServletRequest.getHeader("X-FORWARDED-FOM");
         if(StringUtil.isEmpty(userIpAddress)){
             userIpAddress = httpServletRequest.getRemoteAddr();
         }
-//        String userAgent = httpServletRequest.getHeader("User-Agent");
-        //접근IP 저장
         details.setLoginIpAddress(userIpAddress);
 
-        String userId = authentication.getName();
-
-        //헤더정보 문자화
+        //헤더정보 문자화 및 저장
         Enumeration<String> headerNames = httpServletRequest.getHeaderNames();
         String headers = "";
         while(headerNames.hasMoreElements()){
             String name = headerNames.nextElement();
             headers += name + " : " + httpServletRequest.getHeader(name) + ", ";
         }
-        //헤더정보 저장
         details.setHeaders(headers);
-
-        //사용자 정보
-        params.setString("memberId", userId);
-//        MemberVO memberVO = this.memberService.read(params.getParameterMap());
-//        details.setMemberVO(memberVO);
 
         //authToken에 userDetail 추가
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
@@ -66,8 +59,6 @@ public class CustomAuthenticationSuccessHandler extends SavedRequestAwareAuthent
 
         HttpSession session = httpServletRequest.getSession();
         DefaultSavedRequest savedRequest = (DefaultSavedRequest) session.getAttribute("SPRING_SECURITY_SAVED_REQUEST");
-
-        MemberVO memberVO = this.memberService.read(params.getParameterMap());
 
 //        boolean accessSuccess = memberVO.getAuthList().stream().anyMatch(auth -> auth == "ROLE_MEMBER");
 ////        boolean accessDenied = token.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority() == "ROLE_MEMBER");
