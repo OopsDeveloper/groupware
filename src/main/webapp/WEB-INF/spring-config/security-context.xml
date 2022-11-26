@@ -27,7 +27,7 @@
         <security:intercept-url pattern="/register/registerWrite.do" access="permitAll" /> <!-- 회원가입 -->
         <security:intercept-url pattern="/register/memberIdCheck.do" access="permitAll" /> <!-- 회원가입 -->
         <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" /> <!-- 관리자만 접근 -->
-        <security:intercept-url pattern="/**" access="hasRole('ROLE_ADMIN, ROLE_MEMBER')" /> <!-- 나머지는 인가된 접근(ROLE_MEMBER)만 허용 -->
+        <security:intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN, ROLE_MEMBER')" /> <!-- 나머지는 인가된 접근(ROLE_MEMBER)만 허용 -->
         <!--<security:intercept-url pattern="/**" access="isAuthenticated()" />  나머지는 인가된 접근만 허용 -->
 
         <security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
