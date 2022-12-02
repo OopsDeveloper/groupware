@@ -23,17 +23,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="notice" items="${noticeList}">
+                        <c:forEach var="review" items="${reviewList}">
                             <tr>
-                                <td>${notice.noticeNo}</td>
-                                <td><a href="/notice/noticeView.do?bno=${notice.noticeNo}">${notice.noticeTitle}</a></td>
-                                <td>${notice.registDt}</td>
-                                <td>${notice.noticeWriter}</td>
+                                <td>${review.revNo}</td>
+                                <td><a href="/review/reviewView.do?bno=${review.revNo}">${review.revTitle}</a></td>
+                                <td>${review.registDt}</td>
+                                <td>${review.revWriter}</td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
-                    <button style="float: right" onclick="location.href='/notice/noticeRegist.do'">글쓰기</button>
+                    <button style="float: right" onclick="location.href='/review/reviewRegist.do'">글쓰기</button>
                 </div>
             </div>
         </div>

@@ -3,10 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="grpstudy.grpware.register.mapper.ReviewMapper">
+<mapper namespace="grpstudy.grpware.review.mapper.ReviewMapper">
 
         <!--기업 후기 메인화면-->
-        <select id = "getReviewAll" parameterType="hashMap" resultType="ReviewVO">
+        <select id = "getReviewAll" resultMap="reviewMap">
             SELECT
                    rev_no
                  , rev_title
@@ -14,11 +14,11 @@
                  , rev_writer
                  , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
             FROM
-                  itstudygroup.tb_review
+                  tb_review
         </select>
 
         <!-- 기업 후기 상세화면 -->
-        <select id = "getReviewDetail" parameterType="String" resultType="ReviewVO">
+        <select id = "getReviewDetail" resultMap="reviewMap">
             SELECT
                    rev_no
                  , rev_title
@@ -59,5 +59,13 @@
             WHERE
                 review_no = #{reviewNo}
         </delete>
+
+        <resultMap id="reviewMap" type="grpstudy.grpware.review.domain.ReviewVO">
+            <result property="revNo" column="rev_no" />
+            <result property="revTitle" column="rev_title" />
+            <result property="revContent" column="rev_content" />
+            <result property="revWriter" column="rev_writer" />
+            <result property="registDt" column="regist_dt" />
+        </resultMap>
 
 </mapper>
