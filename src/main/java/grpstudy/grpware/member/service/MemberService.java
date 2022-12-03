@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface MemberService {
-    MemberVO read(Map<String, Object> params);
-    List<MemberVO> getMemberAll();
-
+   public MemberVO read(Map<String, Object> params);
+   public List<MemberVO> getMemberAll();
+   public int deleteMemebr(String id);
+   public int updateAuth(String auth, String id);
 }
