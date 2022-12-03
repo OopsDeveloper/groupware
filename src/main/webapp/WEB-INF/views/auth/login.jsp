@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title> Login Page </title>
+    <title> 로그인 </title>
     <link href="/resources/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -36,11 +36,22 @@
                     alert("아이디 혹은 비밀번호를 입력해주세요.");
                 }
             },
+            forgotPwPopup : function(){
+                let url = "/auth/forgotPw.do";
+                let popName = "forgotPw Popup";
+                let option = "width = 500, height = 500, top = 100, left = 200";
+                window.open(url, popName, option);
+            }
         },
         eventbind = function() {
             $("#loginButton").on("click", function(e){
                 e.preventDefault();
                 process.loginSubmit();
+            });
+
+            $("#forgotPwButton").on('click', function(e){
+                e.preventDefault();
+                process.forgotPwPopup();
             });
         }
         $(document).ready(function(){
@@ -79,8 +90,8 @@
                                         <label class="form-check-label" for="remember-me">자동로그인</label>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                        <a class="small" href="password.html">비밀번호를 잊어버리셨나요?</a>
-                                        <a class="btn btn-primary" href="#!" id="loginButton">Login</a>
+                                        <a class="small" id="forgotPwButton" target="_blank">비밀번호를 잊어버리셨나요?</a>
+                                        <a class="btn btn-primary" id="loginButton">Login</a>
                                     </div>
                                     <input:csrfInput />
                                 </form>

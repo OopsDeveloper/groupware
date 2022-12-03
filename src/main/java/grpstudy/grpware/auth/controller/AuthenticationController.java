@@ -3,6 +3,7 @@ package grpstudy.grpware.auth.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,5 +25,11 @@ public class AuthenticationController {
             model.addAttribute("accessDenied", "접근 권한이 없습니다. 관리자에게 문의하세요.");
         }
         return "/auth/login";
+    }
+
+    @GetMapping("/forgotPw.do")
+    public String forwardForgotPwPage(){
+        log.info("/auth/forgotPw.do");
+        return "/auth/forgotPw";
     }
 }

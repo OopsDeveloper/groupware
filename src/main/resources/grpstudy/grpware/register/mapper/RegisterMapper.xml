@@ -5,9 +5,12 @@
 <mapper namespace="grpstudy.grpware.register.mapper.RegisterMapper">
 
     <select id="registerMemberIdCheck" parameterType="String" resultType="int" >
-        select count(*)
+        select count(1)
         from  tb_member
         where member_id = #{memberId}
+        <if test="@grpstudy.grpware.common.utils.MapperUtil@isNotBlank(memberPhone)">
+            AND member_phone = #{memberPhone}
+        </if>
     </select>
     
     <insert id="registerMember" parameterType="memberVO">
@@ -37,5 +40,11 @@
             ,'ROLE_USER'
         )
     </insert>
+
+    <update id="updateMemberPw" parameterType="hashmap">
+        update tb_member
+        set    member_pw = #{memberPw}
+        where  member_id = #{memberId}
+    </update>
 
 </mapper>
