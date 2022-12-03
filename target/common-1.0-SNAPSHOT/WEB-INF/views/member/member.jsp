@@ -34,9 +34,30 @@
                                 <td>${member.memberPhone}</td>
                                 <td>${member.memberBirth}</td>
                                 <c:forEach var="auth" items="${member.authList}">
+<<<<<<< HEAD
                                     <td>${auth.authAuth}</td>
                                 </c:forEach>
                                 <td><button>삭제</button></td>
+=======
+                                    <td>
+                                        <form method="post" action="/member/updateAuth.do">
+                                            <select name="auth">
+                                                <option value="ROLE_USER" ${auth.authAuth == 'ROLE_USER' ? 'selected="selected"' : ''}>USER</option>
+                                                <option value="ROLE_MEMBER" ${auth.authAuth == 'ROLE_MEMBER' ? 'selected="selected"' : ''}>MEMBER</option>
+                                                <option value="ROLE_ADMIN" ${auth.authAuth == 'ROLE_ADMIN' ? 'selected="selected"' : ''}>ADMIN</option>
+                                            </select>
+                                            <input type="hidden" name="id" value="${member.memberId}">
+                                            <input type="submit" name="updateAuth" value="권한변경">
+                                        </form>
+                                    </td>
+                                </c:forEach>
+                                <td>
+                                    <form method="post" action="/member/deleteMemebr.do">
+                                        <input type="hidden" name="id" value="${member.memberId}">
+                                        <input type="submit" name="deleteBtn" value="삭제">
+                                    </form>
+                                </td>
+>>>>>>> origin/master
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -53,6 +74,10 @@
         </div>
     </footer>
 </div>
+<<<<<<< HEAD
+=======
+<%--<script type="text/javascript" src="/resources/js/member/member.js"></script>--%>
+>>>>>>> origin/master
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/resources/js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

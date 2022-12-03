@@ -19,7 +19,7 @@
                             </tr>
                             <tr>
                                 <td>작성자</td>
-                                <td><input type="text" name="noticeWriter"/></td>
+                                <td><input type="text" name="noticeWriter" value="${loginId}" readonly/></td>
                             </tr>
                             <tr>
                                 <td>내용</td>

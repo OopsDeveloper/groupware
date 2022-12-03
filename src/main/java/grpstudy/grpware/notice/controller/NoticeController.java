@@ -1,5 +1,6 @@
 package grpstudy.grpware.notice.controller;
 
+import grpstudy.grpware.common.utils.CommonUtils;
 import grpstudy.grpware.notice.domain.NoticeVO;
 import grpstudy.grpware.notice.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,8 @@ public class NoticeController {
     }
 
     @GetMapping("/noticeRegist.do")
-    public String getNoticeRegist(){
+    public String getNoticeRegist(Model model){
+        model.addAttribute("loginId",CommonUtils.getLoginId());
         return "notice/noticeRegist";
     }
 

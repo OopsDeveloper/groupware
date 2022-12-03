@@ -29,7 +29,7 @@
                 </td>
               </tr>
             </table>
-            <button type="button" style="float: right" onclick="location.href='/notice/noticeView.do'">뒤로가기</button>
+            <button type="button" style="float: right" onclick="location.href='/notice/noticeView.do?bno=${notice.noticeNo}'">뒤로가기</button>
             <button type="button" style="float: right" onclick="location.href='/notice/noticeDelete.do?bno=${notice.noticeNo}'">삭제하기</button>
             <button type="submit" style="float: right">등록하기</button>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

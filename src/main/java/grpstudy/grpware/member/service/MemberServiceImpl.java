@@ -22,4 +22,14 @@ public class MemberServiceImpl implements MemberService {
     public List<MemberVO> getMemberAll() {
         return memberMapper.getMemberAll();
     }
+
+    @Override
+    public int deleteMemebr(String id) {
+        return memberMapper.deleteMember(id);
+    }
+
+    @Override
+    public int updateAuth(String auth, String id) {
+        return memberMapper.updateAuth(auth, id);
+    }
 }
