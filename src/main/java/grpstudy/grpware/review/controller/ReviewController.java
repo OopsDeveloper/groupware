@@ -24,10 +24,7 @@ public class ReviewController {
 
     // 게시판 글 목록
     @GetMapping("/review.do")
-    public String getReviewAll(HttpServletRequest req, Model model,
-                               ReviewVO reviewVO){
-
-        HttpSession session = req.getSession();
+    public String getReviewAll(Model model){
 
         model.addAttribute("reviewList", reviewService.getReviewAll());
 
