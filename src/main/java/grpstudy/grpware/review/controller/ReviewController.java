@@ -4,6 +4,7 @@ import grpstudy.grpware.common.utils.CommonUtils;
 import grpstudy.grpware.review.domain.ReviewVO;
 import grpstudy.grpware.review.service.ReviewService;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,8 @@ public class ReviewController {
     public String getReviewAll(Model model){
 
         model.addAttribute("reviewList", reviewService.getReviewAll());
+
+        log.info("reviewList : " + reviewService.getReviewAll());
 
         return "review/review";
     }
