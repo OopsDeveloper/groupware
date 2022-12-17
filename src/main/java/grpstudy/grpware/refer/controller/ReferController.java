@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReferController {
 
     @Autowired
-    private ReferService referService;
+     private ReferService referService;
 
     // 자료실 글 목록
     @RequestMapping("/refer.do")

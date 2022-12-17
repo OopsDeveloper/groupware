@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="grpstudy.grpware.Refer.mapper.ReferMapper">
+<mapper namespace="grpstudy.grpware.refer.mapper.ReferMapper">
 
         <!--자료실 메인화면-->
         <select id = "getReferAll" resultMap="ReferMap">
@@ -60,7 +60,7 @@
                 refer_no = #{referNo}
         </delete>
 
-        <resultMap id="ReferMap" type="grpstudy.grpware.Refer.domain.ReferVO">
+        <resultMap id="ReferMap" type="grpstudy.grpware.refer.domain.ReferVO">
             <result property="referNo" column="refer_no" />
             <result property="referTitle" column="refer_title" />
             <result property="referContent" column="refer_content" />
