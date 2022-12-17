@@ -23,10 +23,10 @@ import java.util.Map;
 public class ReviewController {
 
     @Autowired
-    ReviewService reviewService;
+    private ReviewService reviewService;
 
     // 게시판 글 목록
-    @GetMapping("/review.do")
+    @RequestMapping("/review.do")
     public String getReviewAll(Model model){
 
         model.addAttribute("reviewList", reviewService.getReviewAll());
@@ -82,10 +82,30 @@ public class ReviewController {
     // 게시글 삭제
     @RequestMapping("/reviewDelete.do")
     public String reviewDelete(int revNo, Model model){
-        reviewService.deleteReveiw(revNo);
+        reviewService.deleteReview(revNo);
 
         return "redirect:/review/review.do";
     }
+
+
+
+    // 게시판 글 상세
+    @RequestMapping("/reviewView.do")
+    public String getReviewDetail(int revno, Model model){
+
+        model.addAttribute("reviewDetail", reviewService.getReviewDetail(revno));
+        return "review/reviewView";
+    }
+
+    // 게시글 등록
+/*    @GetMapping("/reviewRegist.do")
+    public String setReview(Model model){
+        model.addAttribute("setReview",reviewService.setReview());
+
+        return "review/reviewRegist";
+    }*/
+
+    // 게시글 삭제
 
 
 

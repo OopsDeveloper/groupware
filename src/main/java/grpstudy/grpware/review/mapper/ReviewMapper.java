@@ -22,5 +22,5 @@ public interface ReviewMapper {
     public int updateReview(ReviewVO reviewVO);
 
     // 기업 후기 삭제
-    public int deleteReveiw(int reviewVO);
+    public int deleteReview(int reviewVO);
     }

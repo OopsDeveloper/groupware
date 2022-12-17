@@ -19,5 +19,5 @@ public interface ReviewService {
     public int updateReview(ReviewVO reviewVO);
 
     // 기업 후기 삭제
-    public int deleteReveiw(int revNo);
+    public int deleteReview(int revNo);
 }

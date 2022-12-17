@@ -69,6 +69,7 @@
             ON tsd.study_detail_no = tsp.study_datail_no
             INNER JOIN (SELECT @ROWNUM:=0) rownum
         WHERE tsp.participant_nm = "고용수"
+          AND ts.study_title = #{ts.study_title}
         ORDER BY rownum
         ]]>
     </select>

@@ -40,8 +40,8 @@ public class ReviewServiceImpl implements ReviewService {
 
     // 기업 후기 삭제
     @Override
-    public int deleteReveiw(int revNo) {
-        return this.reviewMapper.deleteReveiw(revNo);
+    public int deleteReview(int revNo) {
+        return this.reviewMapper.deleteReview(revNo);
     }
 
 }

@@ -13,5 +13,5 @@ public interface ProgressMapper {
 
     List<ProgressVO> selectStudyList() throws Exception;
 
-    HashMap<String, Object> selectStudyDetailList(HashMap<String, Object> map);
+    List<HashMap<String, Object>> selectStudyDetailList(HashMap<String, Object> map);
 }

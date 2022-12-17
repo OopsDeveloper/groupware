@@ -85,12 +85,15 @@
                 url : "/progress/progressDetailListAjax.do",
                 method : "POST",
                 dataType : "json",
+                data : {study_title : headName},
                 success : function(data) {
+                    debugger;
                     // 로직처리 부분
                     var result = data.result;
                     console.log(result)
                 },
                 error: function(x, o, e){
+                    debugger;
                     alert(x.status + " : "+ o +" : "+e + "progressDetailListAjax");
                 }
             });

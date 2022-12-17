@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 출처 : https://ming9mon.tistory.com/150 -->
+<!-- 30초마다 설정 파일의 변경을 확인하고, 파일이 변경되면 다시 로딩 -->
+<configuration scan="true" scanPeriod="30 seconds">
+    <!-- logback이 정상 종료되도록 -->
+    <shutdownHook />
+
+    <!-- console에 로그 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%logger] - %replace(%msg){'[\r\n]+', ''} %n</Pattern>
+        </encoder>
+    </appender>
+<!--    <layout class="ch.qos.logback.classic.PatternLayout">-->
+        <!-- <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %40logger{0} - %C - %replace(%msg){'[\r\n]+',
+            ''} %n</Pattern> -->
+<!--        <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%logger] - %replace(%msg){'[\r\n]+', ''} %n</Pattern>-->
+<!--    </layout>-->
+
+    <logger name="grpstudy.grpware" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="org.springframework">
+        <level value="INFO" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <!-- SQL 로그 출력을 위한 설정 추가 시작  -->
+    <logger name="jdbc.sqlonly" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="jdbc.sqltiming" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="jdbc.audit" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="jdbc.resultset" additivity="false">
+        <level value="ERROR" />
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="jdbc.resultsettable" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <!-- SQL 로그 출력을 위한 설정 추가 끝 -->
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
