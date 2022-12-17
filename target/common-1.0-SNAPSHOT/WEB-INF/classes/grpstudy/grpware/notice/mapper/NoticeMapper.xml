@@ -10,7 +10,10 @@
              , notice_writer
              , DATE_FORMAT(regist_dt,'%Y-%m-%d') as regist_dt
         FROM tb_notice
+<<<<<<< HEAD
+=======
         ORDER BY notice_no DESC
+>>>>>>> origin/master
     </select>
 
     <select id="getNotice" resultMap="noticeMap">
@@ -20,7 +23,11 @@
              , notice_writer
              , DATE_FORMAT(regist_dt,'%Y-%m-%d') as regist_dt
         FROM tb_notice
+<<<<<<< HEAD
+        WHERE notice_no = #{bno} ;
+=======
         WHERE notice_no = #{bno}
+>>>>>>> origin/master
     </select>
 
     <insert id="setNotice">

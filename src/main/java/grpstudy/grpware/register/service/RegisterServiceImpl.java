@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.Objects;
 
 @Service
@@ -17,8 +18,8 @@ public class RegisterServiceImpl implements RegisterService {
     PasswordEncoder passwordEncoder;
 
     @Override
-    public int registerMemberIdCheck(String memberId) {
-        return registerMapper.registerMemberIdCheck(memberId);
+    public int registerMemberIdCheck(Map<String, Object> params) {
+        return registerMapper.registerMemberIdCheck(params);
     }
 
     @Override
@@ -32,5 +33,13 @@ public class RegisterServiceImpl implements RegisterService {
         }
 
         return count == 1;
+    }
+
+    @Override
+    public void updateMemberPw(Map<String, Object> params) {
+        //암호화
+        String memberPw = passwordEncoder.encode((String)params.get("memberId"));
+        params.put("memberPw", memberPw);
+        registerMapper.updateMemberPw(params);
     }
 }

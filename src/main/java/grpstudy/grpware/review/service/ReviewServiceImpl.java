@@ -22,7 +22,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     // 기업 후기 상세화면
     @Override
-    public ReviewVO getReviewDetail(String revNo) {
+    public ReviewVO getReviewDetail(int revNo) {
         return this.reviewMapper.getReviewDetail(revNo);
     }
 
@@ -40,8 +40,8 @@ public class ReviewServiceImpl implements ReviewService {
 
     // 기업 후기 삭제
     @Override
-    public int deleteReveiw(ReviewVO reviewVO) {
-        return this.reviewMapper.deleteReveiw(reviewVO);
+    public int deleteReveiw(int revNo) {
+        return this.reviewMapper.deleteReveiw(revNo);
     }
 
 }

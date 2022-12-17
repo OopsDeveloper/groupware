@@ -1,6 +1,7 @@
 package grpstudy.grpware.progress.controller;
 
 import grpstudy.grpware.progress.service.ProgressService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

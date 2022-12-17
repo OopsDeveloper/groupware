@@ -11,26 +11,26 @@
           글보기
         </div>
         <div class="card-body">
-          <form method="post" action="/notice/noticeUpdate.do">
-            <input type="hidden" value="${notice.noticeNo}" name="noticeNo">
+          <form method="post" action="/review/reviewUpdate.do">
+            <input type="hidden" value="${review.revNo}" name="revNo">
             <table>
               <tr>
                 <td>제목</td>
-                <td><input type="text" value="${notice.noticeTitle}" name="noticeTitle"></td>
+                <td><input type="text" value="${review.revTitle}" name="revTitle"></td>
               </tr>
               <tr>
                 <td>작성자</td>
-                <td>${notice.noticeWriter}</td>
+                <td>${review.revWriter}</td>
               </tr>
               <tr>
                 <td>내용</td>
                 <td>
-                  <textarea name="noticeContent">${notice.noticeContent}</textarea>
+                  <textarea name="revContent">${review.revContent}</textarea>
                 </td>
               </tr>
             </table>
-            <button type="button" style="float: right" onclick="location.href='/notice/noticeView.do'">뒤로가기</button>
-            <button type="button" style="float: right" onclick="location.href='/notice/noticeDelete.do?bno=${notice.noticeNo}'">삭제하기</button>
+            <button type="button" style="float: right" onclick="location.href='/review/reviewView.do'">뒤로가기</button>
+            <button type="button" style="float: right" onclick="location.href='/review/reviewDelete.do?revNo=${review.revNo}'">삭제하기</button>
             <button type="submit" style="float: right">등록하기</button>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
           </form>

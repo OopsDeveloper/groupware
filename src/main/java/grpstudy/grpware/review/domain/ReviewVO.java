@@ -1,5 +1,8 @@
 package grpstudy.grpware.review.domain;
 
+import lombok.Data;
+
+@Data
 public class ReviewVO {
 
    // 기업 후기 글 번호
@@ -16,6 +19,7 @@ public class ReviewVO {
 
    // 기업 후기 작성 시간
    private String registDt;
+
 
 
 }

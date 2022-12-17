@@ -34,7 +34,7 @@
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="/method/method.do">공부 방식</a>
-                        <a class="nav-link" href="/calender/calendar.do">일정</a>
+                        <a class="nav-link" href="/study/study.do">일정</a>
                         <a class="nav-link" href="/progress/progress.do">진도율</a>
                     </nav>
                 </div>

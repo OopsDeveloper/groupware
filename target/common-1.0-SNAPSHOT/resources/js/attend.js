@@ -1,6 +1,14 @@
 $(document).ready(function (){
     let token = $("meta[name='_csrf']").attr("content");
     let header = $("meta[name='_csrf_header']").attr("content");
+<<<<<<< HEAD
+
+    $("#attY").on("click",function (){
+        $.ajax({
+            type:"POST",
+            url:"/attend/attend.do",
+            data:{"data":"Y"},
+=======
     let lat, lng, accur;
 
     $("#attY").on("click",function (){
@@ -29,6 +37,7 @@ $(document).ready(function (){
             type:"POST",
             url:"/attend/attend.do",
             data:{"lat":lat,"lng":lng, "accur":accur},
+>>>>>>> origin/master
             beforeSend : function(xhr){
                 xhr.setRequestHeader(header, token);
             },

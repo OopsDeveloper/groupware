@@ -420,8 +420,12 @@
                     <div>
                         <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
                         <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
+<<<<<<< HEAD
+                        <p>출석체크(할리스커피 탄방점)</p>
+=======
                         <p>출석체크(${place.placeName})</p>
                         <%--<p>${loginId}</p>--%>
+>>>>>>> origin/master
                         <button type="button" id="attY">참석</button>
                         <button type="button" id="attN">불참</button>
                         <input type="text" id="attContent">

@@ -1,12 +1,14 @@
 package grpstudy.grpware.progress.service;
 
 import grpstudy.grpware.progress.mapper.ProgressMapper;
+import grpstudy.grpware.progress.domain.ProgressVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -29,5 +31,15 @@ public class ProgressServiceImpl implements ProgressService{
             obj.put("statusDescription", "오류 발생");
         }
         return obj;
+    }
+
+    @Override
+    public List<ProgressVO> selectStudyList() throws Exception {
+        return progressMapper.selectStudyList();
+    }
+
+    @Override
+    public HashMap<String, Object> selectStudyDetailList(HashMap<String, Object> map) {
+        return progressMapper.selectStudyDetailList(map);
     }
 }

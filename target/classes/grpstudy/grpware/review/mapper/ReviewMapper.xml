@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="grpstudy.grpware.review.mapper.ReviewMapper">
+
+        <!--기업 후기 메인화면-->
+        <select id = "getReviewAll" resultMap="reviewMap">
+            SELECT
+                   rev_no
+                 , rev_title
+                 , rev_content
+                 , rev_writer
+                 , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
+            FROM
+                  tb_review
+        </select>
+
+        <!-- 기업 후기 상세화면 -->
+        <select id = "getReviewDetail" resultMap="reviewMap">
+            SELECT
+                   rev_no
+                 , rev_title
+                 , rev_content
+                 , rev_writer
+                 , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
+            FROM
+                itstudygroup.tb_review
+            WHERE
+                rev_no = #{revno}
+        </select>
+
+        <!-- 기업 후기 등록 -->
+        <insert id = "setReview" parameterType="ReviewVO">
+            INSERT INTO
+                itstudygroup.tb_review
+                (rev_title, rev_content, rev_writer, regist_dt)
+            VALUES
+                (#{reviewTitle}, #{reviewContent}, #{reviewWriter}, #{registDt})
+        </insert>
+
+        <!-- 기업 후기 수정 -->
+        <update id = "updateReview" parameterType="ReviewVO">
+            UPDATE
+                itstudygroup.tb_review
+            SET
+                review_title = #{reviewTitle}
+              , review_content = #{reviewContent}
+            WHERE
+                review_no = #{reviewNo}
+        </update>
+
+        <!-- 기업 후기 삭제 -->
+        <delete id = "deleteReveiw" parameterType = "String">
+            DELETE
+            FROM
+                itstudygroup.tb_review
+            WHERE
+                review_no = #{reviewNo}
+        </delete>
+
+        <resultMap id="reviewMap" type="grpstudy.grpware.review.domain.ReviewVO">
+            <result property="revNo" column="rev_no" />
+            <result property="revTitle" column="rev_title" />
+            <result property="revContent" column="rev_content" />
+            <result property="revWriter" column="rev_writer" />
+            <result property="registDt" column="regist_dt" />
+        </resultMap>
+
+</mapper>

@@ -11,25 +11,25 @@
                     글쓰기
                 </div>
                 <div class="card-body">
-                    <form method="post" action="/notice/noticeRegist.do">
+                    <form method="post" action="/review/reviewRegist.do">
                         <table>
                             <tr>
                                 <td>제목</td>
-                                <td><input type="text" name="noticeTitle"/></td>
+                                <td><input type="text" name="revTitle"/></td>
                             </tr>
                             <tr>
                                 <td>작성자</td>
-                                <td><input type="text" name="noticeWriter"/></td>
+                                <td><input type="text" name="revWriter" value = "${loginId}" readonly/></td>
                             </tr>
                             <tr>
                                 <td>내용</td>
                                 <td>
-                                    <textarea name="noticeContent"></textarea>
+                                    <textarea name="revContent"></textarea>
                                 </td>
                             </tr>
                         </table>
                         <button type="submit" style="float: right">제출하기</button>
-                        <button type="button" style="float: right" onclick="location.href='/notice/notice.do'">뒤로가기</button>
+                        <button type="button" style="float: right" onclick="location.href='/review/review.do'">뒤로가기</button>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     </form>
                 </div>
