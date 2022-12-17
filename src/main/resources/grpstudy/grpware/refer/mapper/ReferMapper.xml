@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="grpstudy.grpware.Refer.mapper.ReferMapper">
+
+        <!--자료실 메인화면-->
+        <select id = "getReferAll" resultMap="ReferMap">
+            SELECT
+                   refer_no
+                 , refer_title
+                 , refer_content
+                 , refer_writer
+                 , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
+            FROM
+                  tb_Refer
+        </select>
+
+        <!-- 자료실 상세화면 -->
+        <select id = "getReferDetail" resultMap="ReferMap">
+            SELECT
+                   refer_no
+                 , refer_title
+                 , refer_content
+                 , refer_writer
+                 , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
+            FROM
+                itstudygroup.tb_Refer
+            WHERE
+                refer_no = #{referNo}
+        </select>
+
+        <!-- 자료실 등록 -->
+        <insert id = "setRefer" parameterType="ReferVO">
+            INSERT INTO
+                itstudygroup.tb_Refer
+                (refer_title, refer_content, refer_writer, regist_dt)
+            VALUES
+                (#{referTitle}, #{referContent}, #{referWriter}, now())
+        </insert>
+
+        <!-- 자료실 수정 -->
+        <update id = "updateRefer" parameterType="ReferVO">
+            UPDATE
+                tb_Refer
+            SET
+                refer_title = #{referTitle}
+              , refer_content = #{referContent}
+            WHERE
+                refer_no = #{referNo}
+        </update>
+
+        <!-- 자료실 삭제 -->
+        <delete id = "deleteRefer" parameterType = "int">
+            DELETE
+            FROM
+                itstudygroup.tb_Refer
+            WHERE
+                refer_no = #{referNo}
+        </delete>
+
+        <resultMap id="ReferMap" type="grpstudy.grpware.Refer.domain.ReferVO">
+            <result property="referNo" column="refer_no" />
+            <result property="referTitle" column="refer_title" />
+            <result property="referContent" column="refer_content" />
+            <result property="referWriter" column="refer_writer" />
+            <result property="registDt" column="regist_dt" />
+        </resultMap>
+
+</mapper>

@@ -21,6 +21,12 @@
     <definition name="notice/*" extends="layout-tiles">
         <put-attribute name="body" value="/WEB-INF/views/notice/{1}.jsp" />
     </definition>
+    <definition name="review/*" extends="layout-tiles">
+        <put-attribute name="body" value="/WEB-INF/views/review/{1}.jsp" />
+    </definition>
+    <definition name="refer/*" extends="layout-tiles">
+        <put-attribute name="body" value="/WEB-INF/views/refer/{1}.jsp" />
+    </definition>
     <definition name="member/*" extends="layout-tiles">
         <put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
     </definition>
