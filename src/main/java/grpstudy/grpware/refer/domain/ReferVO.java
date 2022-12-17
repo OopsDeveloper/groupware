@@ -19,4 +19,6 @@ public class ReferVO {
 
     // 자료실 시간
     private String registDt;
+    
+    // 자료실 파일
 }
