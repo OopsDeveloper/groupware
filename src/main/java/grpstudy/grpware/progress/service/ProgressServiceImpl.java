@@ -39,7 +39,7 @@ public class ProgressServiceImpl implements ProgressService{
     }
 
     @Override
-    public HashMap<String, Object> selectStudyDetailList(HashMap<String, Object> map) {
+    public List<HashMap<String, Object>> selectStudyDetailList(HashMap<String, Object> map) {
         return progressMapper.selectStudyDetailList(map);
     }
 }
