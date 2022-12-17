@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="grpstudy.grpware.study.mapper.StudyMapper">
+    <select id="getStudyAll" resultType="studyVO">
+        SELECT study_title as title
+             , DATE_FORMAT(study_period_start,'%Y-%m-%d') as start
+             , DATE_FORMAT(study_period_end,'%Y-%m-%d') as end
+        FROM tb_study
+        ORDER BY study_no DESC
+    </select>
+
+    <insert id="setStudy">
+        INSERT INTO tb_study (study_title, study_period_start, study_period_end)
+              VALUE (#{title}, #{start}, #{end})
+    </insert>
+
+    <update id="updateNotice">
+        UPDATE tb_notice SET notice_title = #{noticeTitle}
+                           , notice_content = #{noticeContent}
+         WHERE notice_no = #{noticeNo}
+    </update>
+
+    <delete id="deleteNotice">
+        DELETE FROM tb_notice WHERE notice_no = #{bno}
+    </delete>
+
+</mapper>
