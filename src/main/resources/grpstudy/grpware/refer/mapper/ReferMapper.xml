@@ -14,7 +14,7 @@
                  , refer_writer
                  , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
             FROM
-                  tb_Refer
+                tb_refer
         </select>
 
         <!-- 자료실 상세화면 -->
@@ -26,7 +26,7 @@
                  , refer_writer
                  , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
             FROM
-                itstudygroup.tb_Refer
+                itstudygroup.tb_refer
             WHERE
                 refer_no = #{referNo}
         </select>
@@ -34,7 +34,7 @@
         <!-- 자료실 등록 -->
         <insert id = "setRefer" parameterType="ReferVO">
             INSERT INTO
-                itstudygroup.tb_Refer
+                itstudygroup.tb_refer
                 (refer_title, refer_content, refer_writer, regist_dt)
             VALUES
                 (#{referTitle}, #{referContent}, #{referWriter}, now())
@@ -43,7 +43,7 @@
         <!-- 자료실 수정 -->
         <update id = "updateRefer" parameterType="ReferVO">
             UPDATE
-                tb_Refer
+                tb_refer
             SET
                 refer_title = #{referTitle}
               , refer_content = #{referContent}
@@ -55,7 +55,7 @@
         <delete id = "deleteRefer" parameterType = "int">
             DELETE
             FROM
-                itstudygroup.tb_Refer
+                itstudygroup.tb_refer
             WHERE
                 refer_no = #{referNo}
         </delete>
