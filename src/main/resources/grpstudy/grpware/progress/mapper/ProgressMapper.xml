@@ -57,7 +57,6 @@
         ]]>
     </select>
     <select id="selectStudyDetailList" parameterType="map" resultType="CustomMap">
-        <![CDATA[
         SELECT @ROWNUM:=@ROWNUM+1 AS rownum
                 ,ts.study_title
                 ,tsd.study_detail_content
@@ -69,9 +68,8 @@
             ON tsd.study_detail_no = tsp.study_datail_no
             INNER JOIN (SELECT @ROWNUM:=0) rownum
         WHERE tsp.participant_nm = "고용수"
-          AND ts.study_title = #{ts.study_title}
+          AND ts.study_title = #{study_title}
         ORDER BY rownum
-        ]]>
     </select>
 
     <select id="selectStudyParticipantList" resultMap="progressMap">

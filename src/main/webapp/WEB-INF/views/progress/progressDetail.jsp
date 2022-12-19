@@ -87,7 +87,6 @@
                 dataType : "json",
                 data : {study_title : headName},
                 success : function(data) {
-                    debugger;
                     // 로직처리 부분
                     var result = data.result;
                     console.log(result)
