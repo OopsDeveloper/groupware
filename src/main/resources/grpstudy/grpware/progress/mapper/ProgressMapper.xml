@@ -56,7 +56,7 @@
         ORDER BY study_no
         ]]>
     </select>
-    <select id="selectStudyDetailList" parameterType="map" resultType="CustomMap">
+    <select id="selectStudyDetailList" parameterType="hashmap" resultMap="progressMap">
         SELECT @ROWNUM:=@ROWNUM+1 AS rownum
                 ,ts.study_title
                 ,tsd.study_detail_content
