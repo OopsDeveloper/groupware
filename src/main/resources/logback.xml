@@ -23,7 +23,7 @@
         <appender-ref ref="STDOUT" />
     </logger>
 
-    <logger name="org.springframework">
+    <logger name="org.springframework" additivity="false">
         <level value="INFO" />
         <appender-ref ref="STDOUT" />
     </logger>
