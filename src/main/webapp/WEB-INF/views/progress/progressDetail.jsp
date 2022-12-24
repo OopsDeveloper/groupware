@@ -12,7 +12,7 @@
             <div class="card mb-4 progress-detail-present">
                 <div class="card-header progress-detail-head">
                     <i class="fas fa-table me-1"></i>
-                    토비의 스프링
+                    상세 보기
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">
@@ -23,15 +23,17 @@
                             <th>완료</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="content-tbody">
+                        <%--
                         <tr>
-                            <td>1</td>
-                            <td>1.스프링의 이해</td>
-                            <td>
+                            <td class="seq">1</td>
+                            <td class="content">1.스프링의 이해</td>
+                            <td class="">
                                 <input type="checkbox" name="checkedValue" value="1"/> 완료
                                 <input type="checkbox" name="checkedValue" value="0"/> 미완료
                             </td>
                         </tr>
+                        --%>
                         </tbody>
                     </table>
                 </div>
@@ -88,8 +90,23 @@
                 data : {study_title : headName},
                 success : function(data) {
                     // 로직처리 부분
-                    var result = data.result;
+                    let result = data.result;
                     console.log(result)
+                    let tempStr = ''
+                    $(".content-tbody").find('tr').remove();
+
+                    result.forEach(function (item, index) {
+                        tempStr += '<tr>'
+                        + '<td class="seq">' + result[index].seq + '</td>'
+                        + '<td class="content">' + result[index].content + '</td>'
+                        + '<td class="">'
+                        + '<input type="checkbox" name="checkedValue" value="1"/>' + ' 완료'
+                        + '<input type="checkbox" name="checkedValue" value="0"/>' + ' 미완료'
+                        + '</td>'
+                        + '</tr>';
+                    });
+                    $(".dataTables-empty").closest('tr').remove();
+                    $(".content-tbody").append(tempStr);
                 },
                 error: function(x, o, e){
                     debugger;
@@ -99,7 +116,6 @@
 
             /*
             var str = ''
-            $(".progress-detail-present").html(str);
 
             str = `
             <div class="card-header">
