@@ -3,6 +3,7 @@ package grpstudy.grpware.study.domain;
 import java.util.Date;
 
 public class StudyVO {
+    int no;
     String title;
     Date start;
     Date end;
@@ -31,10 +32,19 @@ public class StudyVO {
         this.end = end;
     }
 
+    public int getNo() {
+        return no;
+    }
+
+    public void setNo(int no) {
+        this.no = no;
+    }
+
     @Override
     public String toString() {
         return "StudyVO{" +
-                "title='" + title + '\'' +
+                "no=" + no +
+                ", title='" + title + '\'' +
                 ", start=" + start +
                 ", end=" + end +
                 '}';

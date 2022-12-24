@@ -227,6 +227,7 @@
     }
 
     function savePlcae(){
+        debugger;
         var cPlace = $("#cPlace").val();
         var address = $("#addressName").val();
         var title = $("#placeName").val();

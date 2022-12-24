@@ -7,6 +7,7 @@
         SELECT study_title as title
              , DATE_FORMAT(study_period_start,'%Y-%m-%d') as start
              , DATE_FORMAT(study_period_end,'%Y-%m-%d') as end
+             , study_no as no
         FROM tb_study
         ORDER BY study_no DESC
     </select>
@@ -16,14 +17,15 @@
               VALUE (#{title}, #{start}, #{end})
     </insert>
 
-    <update id="updateNotice">
-        UPDATE tb_notice SET notice_title = #{noticeTitle}
-                           , notice_content = #{noticeContent}
-         WHERE notice_no = #{noticeNo}
+    <update id="updateStudy">
+        UPDATE tb_study SET study_title = #{title}
+                           , study_period_start = #{start}
+                           , study_period_end = #{end}
+         WHERE study_no = #{no}
     </update>
 
-    <delete id="deleteNotice">
-        DELETE FROM tb_notice WHERE notice_no = #{bno}
+    <delete id="deleteStudy" parameterType="studyVO">
+        DELETE FROM tb_study WHERE study_no = #{no}
     </delete>
 
 </mapper>

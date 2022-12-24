@@ -12,5 +12,5 @@ public interface StudyMapper {
     StudyVO getStudy(int bno);
     int setStudy(StudyVO studyVO);
     int updateStudy(StudyVO studyVO);
-    int deleteStudy(int bno);
+    int deleteStudy(StudyVO studyVO);
 }

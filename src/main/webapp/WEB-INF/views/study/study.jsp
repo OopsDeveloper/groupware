@@ -73,7 +73,6 @@
                         dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
                         locale: 'ko', // 한국어 설정
                         eventAdd: function(data) { // 이벤트가 추가되면 발생하는 이벤트
-                            debugger;
                             let obj = {};
                             obj.title = data.event._def.title;
                             obj.start = data.event._instance.range.start;
@@ -97,8 +96,32 @@
                                 }
                             });
                         },
-                        eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트
-                            console.log(obj);
+                        eventChange: function(data) { // 이벤트가 수정되면 발생하는 이벤트
+                            if(confirm("'"+ data.event.title+"'일정을 수정하시겠습니까 ?")){
+                                let obj = {};
+                                obj.title = data.event._def.title;
+                                obj.start = data.event._instance.range.start;
+                                obj.end = data.event._instance.range.end;
+                                obj.no = data.event._def.extendedProps.no;
+
+                                $.ajax({
+                                    type: "post",
+                                    url: "/study/update.do",
+                                    data: obj,
+                                    success : function(data){
+                                        if(data === 'OK'){
+                                            alert("수정되었습니다!");
+                                            window.location.reload();
+                                        } else{
+                                            alert("수정 실패했습니다!");
+                                            window.location.reload()
+                                        }
+                                    },
+                                    error : function(error){
+                                        console.log(error);
+                                    }
+                                });
+                            }
                         },
                         eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
                             console.log(obj);
@@ -114,6 +137,37 @@
                                 })
                             }
                             calendar.unselect()
+                        },
+                        eventClick: function(data){
+                            if(confirm("'"+ data.event.title+"'일정을 삭제하시겠습니까 ?")){
+                                debugger;
+                                let obj = {};
+                                obj.title = data.event._def.title;
+                                obj.start = data.event._instance.range.start;
+                                obj.end = data.event._instance.range.end;
+                                obj.no = data.event._def.extendedProps.no;
+
+                                $.ajax({
+                                    type: "post",
+                                    url: "/study/delete.do",
+                                    data: obj,
+                                    success : function(data){
+                                        if(data === 'OK'){
+                                            alert("삭제되었습니다!");
+                                            window.location.reload();
+                                        } else{
+                                            alert("삭제 실패했습니다!");
+                                            window.location.reload()
+                                        }
+                                    },
+                                    error : function(error){
+                                        console.log(error);
+                                    }
+                                });
+                            }
+                        },
+                        dateClick:function (data){
+                            console.log(data);
                         },
                         events:studyData
                     });

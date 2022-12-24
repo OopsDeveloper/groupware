@@ -35,11 +35,11 @@ public class StudyServiceImpl implements StudyService {
 
     @Override
     public int updateStudy(StudyVO studyVO) {
-        return 0;
+        return studyMapper.updateStudy(studyVO);
     }
 
     @Override
-    public int deleteStudy(int bno) {
-        return 0;
+    public int deleteStudy(StudyVO studyVO) {
+        return studyMapper.deleteStudy(studyVO);
     }
 }

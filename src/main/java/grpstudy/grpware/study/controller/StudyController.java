@@ -45,6 +45,7 @@ public class StudyController {
             hash.put("title", listAll.get(i).getTitle());
             hash.put("start", listAll.get(i).getStart());
             hash.put("end", listAll.get(i).getEnd());
+            hash.put("no", listAll.get(i).getNo());
 
             jsonObj = new JSONObject(hash);
             jsonArr.add(jsonObj);
@@ -56,6 +57,30 @@ public class StudyController {
     @ResponseBody
     public String regist(StudyVO vo){
         int cnt = studyService.setStudy(vo);
+
+        if(cnt <= 0){
+            return "NOK";
+        } else{
+            return "OK";
+        }
+    }
+
+    @RequestMapping("/delete.do")
+    @ResponseBody
+    public String delete(StudyVO vo){
+        int cnt = studyService.deleteStudy(vo);
+
+        if(cnt <= 0){
+            return "NOK";
+        } else{
+            return "OK";
+        }
+    }
+
+    @RequestMapping("/update.do")
+    @ResponseBody
+    public String update(StudyVO vo){
+        int cnt = studyService.updateStudy(vo);
 
         if(cnt <= 0){
             return "NOK";
