@@ -37,7 +37,8 @@
                 itstudygroup.tb_refer
                 (refer_title, refer_content, refer_writer, regist_dt)
             VALUES
-                (#{referTitle}, #{referContent}, #{referWriter}, now())
+                (#{referTitle}, #{referContent}, #{referWriter}, now());
+
         </insert>
 
         <!-- 자료실 수정 -->

@@ -27,17 +27,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="review" items="${reviewList}">
+                        <c:forEach var="refer" items="${referList}">
                             <tr>
-                                <td>${review.revNo}</td>
-                                <td><a href="/review/reviewView.do?revNo=${review.revNo}">${review.revTitle}</a></td>
-                                <td>${review.registDt}</td>
-                                <td>${review.revWriter}</td>
+                                <td>${refer.referNo}</td>
+                                <td><a href="/refer/referView.do?referNo=${refer.referNo}">${refer.referTitle}</a></td>
+                                <td>${refer.registDt}</td>
+                                <td>${refer.referWriter}</td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
-                    <button style="float: right" onclick="location.href='/review/reviewRegist.do'">글쓰기</button>
+                    <button style="float: right" onclick="location.href='/refer/referRegist.do'">글쓰기</button>
                 </div>
             </div>
         </div>

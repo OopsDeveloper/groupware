@@ -20,6 +20,4 @@ public class ReviewVO {
    // 기업 후기 작성 시간
    private String registDt;
 
-
-
 }

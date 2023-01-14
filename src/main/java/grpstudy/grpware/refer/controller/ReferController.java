@@ -19,6 +19,8 @@ public class ReferController {
     @Autowired
      private ReferService referService;
 
+
+
     // 자료실 글 목록
     @RequestMapping("/refer.do")
     public String getReferAll(Model model){
@@ -45,7 +47,7 @@ public class ReferController {
     }
 
     // 자료실 글 등록 post
-    @PostMapping("/reviewRegist.do")
+    @PostMapping("/referRegist.do")
     public String postReferRegist(ReferVO referVO){
         System.out.println("referVO : " + referVO);
 

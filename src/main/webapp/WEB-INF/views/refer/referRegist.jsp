@@ -11,25 +11,30 @@
                     글쓰기
                 </div>
                 <div class="card-body">
-                    <form method="post" action="/review/reviewRegist.do">
+                    <form method="post" action="/refer/referRegist.do" enctype = "multipart/form-data">
                         <table>
                             <tr>
                                 <td>제목</td>
-                                <td><input type="text" name="revTitle"/></td>
+                                <td><input type="text" name="referTitle"/></td>
                             </tr>
                             <tr>
                                 <td>작성자</td>
-                                <td><input type="text" name="revWriter" value = "${loginId}" readonly/></td>
+                                <td><input type="text" name="referWriter" value = "${loginId}" readonly/></td>
                             </tr>
                             <tr>
                                 <td>내용</td>
                                 <td>
-                                    <textarea name="revContent"></textarea>
+                                    <textarea name="referContent"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type = "file" name = "file">
                                 </td>
                             </tr>
                         </table>
                         <button type="submit" style="float: right">제출하기</button>
-                        <button type="button" style="float: right" onclick="location.href='/review/review.do'">뒤로가기</button>
+                        <button type="button" style="float: right" onclick="location.href='/refer/refer.do'">뒤로가기</button>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     </form>
                 </div>

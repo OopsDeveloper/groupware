@@ -158,6 +158,13 @@
             <version>2.9.6</version>
         </dependency>
 
+        <!-- (20230113) file 업로드 관련 MultipartHttpServletRequset -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
         <!-- (20220827) file 업로드 -->
         <dependency>
             <groupId>commons-fileupload</groupId>

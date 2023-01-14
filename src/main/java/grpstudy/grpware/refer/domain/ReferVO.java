@@ -1,6 +1,7 @@
 package grpstudy.grpware.refer.domain;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class ReferVO {
@@ -20,5 +21,12 @@ public class ReferVO {
     // 자료실 시간
     private String registDt;
     
-    // 자료실 파일
+    // 자료실 파일명
+    private String referFname;
+
+    // 실제 업로드할 파일
+    private MultipartFile uploadFile;
+
+
+
 }

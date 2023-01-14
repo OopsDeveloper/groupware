@@ -11,26 +11,26 @@
           글보기
         </div>
         <div class="card-body">
-          <form method="post" action="/review/reviewUpdate.do">
-            <input type="hidden" value="${review.revNo}" name="revNo">
+          <form method="post" action="/refer/referUpdate.do">
+            <input type="hidden" value="${refer.referNo}" name="referNo">
             <table>
               <tr>
                 <td>제목</td>
-                <td><input type="text" value="${review.revTitle}" name="revTitle"></td>
+                <td><input type="text" value="${refer.referTitle}" name="referTitle"></td>
               </tr>
               <tr>
                 <td>작성자</td>
-                <td>${review.revWriter}</td>
+                <td>${refer.referWriter}</td>
               </tr>
               <tr>
                 <td>내용</td>
                 <td>
-                  <textarea name="revContent">${review.revContent}</textarea>
+                  <textarea name="referContent">${refer.referContent}</textarea>
                 </td>
               </tr>
             </table>
-            <button type="button" style="float: right" onclick="location.href='/review/reviewView.do'">뒤로가기</button>
-            <button type="button" style="float: right" onclick="location.href='/review/reviewDelete.do?revNo=${review.revNo}'">삭제하기</button>
+            <button type="button" style="float: right" onclick="location.href='/refer/referView.do'">뒤로가기</button>
+            <button type="button" style="float: right" onclick="location.href='/refer/referDelete.do?referNo=${refer.referNo}'">삭제하기</button>
             <button type="submit" style="float: right">등록하기</button>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
           </form>

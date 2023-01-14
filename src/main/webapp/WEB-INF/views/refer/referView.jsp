@@ -14,19 +14,19 @@
           <table>
             <tr>
               <td>제목</td>
-              <td>${review.revTitle}</td>
+              <td>${refer.referTitle}</td>
             </tr>
             <tr>
               <td>작성자</td>
-              <td>${review.revWriter}</td>
+              <td>${refer.referWriter}</td>
             </tr>
             <tr>
               <td>내용</td>
-              <td>${review.revContent}</td>
+              <td>${refer.referContent}</td>
             </tr>
           </table>
-          <button style="float: right" onclick="location.href='/review/review.do'">뒤로가기</button>
-          <button style="float: right" onclick="location.href='/review/reviewModify.do?revNo=${review.revNo}'">수정하기</button>
+          <button style="float: right" onclick="location.href='/refer/refer.do'">뒤로가기</button>
+          <button style="float: right" onclick="location.href='/refer/referModify.do?referNo=${refer.referNo}'">수정하기</button>
         </div>
       </div>
     </div>

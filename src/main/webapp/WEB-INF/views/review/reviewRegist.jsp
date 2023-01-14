@@ -15,7 +15,7 @@
                         <table>
                             <tr>
                                 <td>제목</td>
-                                <td><input type="text" name="revTitle"/></td>
+                                <td><input type="text" name="referTitle"/></td>
                             </tr>
                             <tr>
                                 <td>작성자</td>
