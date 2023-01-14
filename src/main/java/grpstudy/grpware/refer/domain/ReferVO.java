@@ -27,6 +27,4 @@ public class ReferVO {
     // 실제 업로드할 파일
     private MultipartFile uploadFile;
 
-
-
 }

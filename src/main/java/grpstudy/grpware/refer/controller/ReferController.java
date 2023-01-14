@@ -10,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @Slf4j
@@ -48,7 +51,20 @@ public class ReferController {
 
     // 자료실 글 등록 post
     @PostMapping("/referRegist.do")
-    public String postReferRegist(ReferVO referVO){
+    public String postReferRegist(ReferVO referVO, HttpServletRequest request){
+
+        String Realpath = request.getSession().getServletContext().getRealPath("/file/");
+
+        System.out.println(Realpath);
+
+        MultipartFile uploadFile = referVO.getUploadFile();
+
+/*        if(!uploadFile.isEmpty()){
+            try{
+
+            }
+        }*/
+
         System.out.println("referVO : " + referVO);
 
         int cnt = referService.setRefer(referVO);
