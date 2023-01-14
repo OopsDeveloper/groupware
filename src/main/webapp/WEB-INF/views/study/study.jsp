@@ -86,7 +86,7 @@
                                     if(data === 'OK'){
                                         alert("등록되었습니다!");
                                         window.location.reload();
-                                    } else{
+                                    } else {
                                         alert("등록 실패했습니다!");
                                         window.location.reload()
                                     }

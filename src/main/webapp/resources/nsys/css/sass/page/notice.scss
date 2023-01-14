@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/*!
+ * Sub Page Notice 
+ * Last Date : 21.09.03
+ */
+@import "../helpers/variables";
+@import "../helpers/mixins";
+@import "../components/board";
+@import "../components/form";
+@import "../components/button";
+@import "../components/typography";
+
+.search-wrap.type2 {
+    div:nth-child(1), div:nth-child(2) {
+        flex: 0 1 160px;
+        margin-right: 20px;                
+    }
+    div:nth-child(3) {
+        flex: 1 1 (calc(100% - 360px));
+    }
+}
+
+
+
+
+

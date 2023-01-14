@@ -1,0 +1,282 @@
+@charset "UTF-8";
+/*!
+ * Layout
+ * Last Date : 21.10.01
+ */
+@import "../helpers/variables";
+@import "../helpers/mixins";
+@import "../components/dropdown";
+@import "../components/typography";
+@import "../components/modal";
+
+// == COMMON 
+.container-flex-wrap {
+    flex-wrap: wrap;
+}
+.container-align-start {//items 아래로
+    align-items: flex-start;
+}
+.justify-center {
+    justify-content: center;
+}
+.d-flex { display: flex;}
+.d-block { display: block;}
+
+// margin , padding
+.m-0   { margin: 0 !important;}
+.p-0   { padding: 0 !important;}
+
+.p-3   { padding: 1rem !important;}
+.ml-2  { margin-left: .5rem !important}
+
+.mt-10 { margin-top: 10px !important;}
+.mt-20 { margin-top: 20px !important;}
+.mb-10 { margin-bottom: 10px !important;}
+.mb-20 { margin-bottom: 20px !important;}
+
+.pt-10 { padding-top: 10px !important;}
+.pt-20 { padding-top: 20px !important;}
+.pb-10 { padding-bottom: 10px !important;}
+.pb-20 { padding-bottom: 20px !important;}
+
+// opacity
+.opacity-5 {opacity: .5 !important;}
+.opacity-8 {opacity: .8 !important;}
+
+.bg-deep {
+    background-image: linear-gradient(120deg, #a17cc3 0%, #0b3968 100%) !important;
+}
+// .fade {
+// transition: opacity 0.15s linear;
+// }
+
+
+// == LAYOUT
+#wrap {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: $color-bg;
+}
+// = header
+header#header {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+    width: 100%; 
+    height: 60px;
+    border-bottom: 1px solid #06359e;
+    background-color: $color-bg;
+    
+    h1.logo {
+        width: 260px;
+        height: 40px;
+        background: url("../images/commom/logo_nsys_2.png") no-repeat 30px 4px;
+        background-size: auto 34px;
+        font-size: 0;
+        text-indent: -999em;
+    }
+    .app-header {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;//오른쪽
+        align-items: center;
+        align-content: center;
+        padding: 0 1.5rem;
+
+        .app-wrap-right {
+            position: relative;
+            margin-left: 1.5rem;
+            padding-left: 1.5rem;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: -1px;
+                top: 20%;
+                width: 1px;
+                height: 30px;
+                background: #dee2e6;
+            }
+        }
+        .timeline a {
+                display: block;
+                margin-left: 20px;
+                
+        }
+    }    
+}
+// = container
+.container {
+    display: flex;
+    flex: 1;
+    z-index: 5;
+    min-height: 700px;
+    position: relative;
+    padding-top: 60px;
+}
+// = navigation
+nav#navigation {
+    display: flex;
+    overflow: hidden;
+    z-index: 10;
+    position: fixed;
+    min-width: 240px;
+    height: 100vh;
+    flex: 0 0 240px;
+    margin-top: -60px;
+    padding-top: 60px;
+    background-color: #0948b3;
+    transition: all .2s;
+
+    > .inner {
+        overflow-y: auto;
+        position: relative;
+        width: 100%;
+        padding: 0 1.5rem;        
+        
+        > .bg {
+            width: 110px;
+            height: 110px;
+            margin: 44px auto;
+            background: url("../images/commom/logo_1.png") no-repeat center/88% auto;
+            opacity: .6;
+        }
+        
+        .vertical-nav {
+            position: relative;
+
+            a {
+                display: block;
+                position: relative;
+                color: $color-bg;
+                @include border-radius( .25rem);
+                white-space: nowrap;
+                transition: all .2s;
+            }
+
+            > li > ul.mm-menu {
+                //display: none;
+                overflow: hidden;
+                height: 0;
+                opacity: 0;
+                transition: all .3s;
+            }
+
+            > li:hover > ul.mm-menu, 
+            > li.active > ul.mm-menu.show {
+                //display: block;
+                height: auto;
+                opacity: 1;
+            }
+        }
+    }
+}
+.vertical-nav > li {
+    margin-bottom: 16px;
+    
+    > a {
+        line-height: 44px;
+        padding: 0 0 0 15px;
+        
+        i.ico {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 20px;
+            line-height: 20px;
+            margin-top: -12px;
+            font-size: 14px;
+            text-align: center;
+            opacity: .4;
+            transition: transform 300ms;
+        }
+
+        &.active, &:hover {
+            background-color: #1657c5;
+
+            i.ico {
+                opacity: .7;
+            }
+        }
+    }  
+    &.active > a i.ico {
+        transform: rotate(-180deg);
+    }
+    ul.mm-menu {
+        position: relative;
+        margin-top: 10px;
+        padding: .5em 0 0 1.6rem;
+        transition: padding 300ms;
+    
+        &:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            border-radius: 15px;
+            opacity: .8;
+            background: #e0f3ff;
+        }
+        > li {
+            margin-bottom: 12px;
+    
+            > a {
+                line-height: 20px;
+                padding-bottom: 2px;
+                color: #fff;
+                
+                &.active, &:hover, .active {
+                    color: #ffe687 !important;
+                }
+            }
+        } 
+    }
+}
+// = .content
+.content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow-x: auto;
+    min-width: 935px;
+    padding: 1rem 3rem 3rem 280px;
+}
+
+// = ERROR
+.error {
+    margin: 3% auto 0;
+    padding: 30px 0 15px;
+    background-color: rgb(255, 255, 240);
+    .error {
+        max-width: 600px;
+        min-height: 300px;
+        padding: 50px 205px 50px 30px;
+        border-top: 2px solid #333;
+        border-bottom: 2px solid #333;
+        background: rgb(255, 255, 240) url('../images/commom/error.png') no-repeat 100% 70px;
+        #logo {
+            display: inline-block;
+            height: 54px;
+            width: 150px;
+            background: url('../images/commom/logo_nsys_1.png') no-repeat;
+        }
+        p {
+            overflow: hidden;
+            line-height: 2rem;
+            margin: 16px 0 22px;
+            font-size: 1.2rem;
+            code {
+                font-size: 1.6rem;
+                font-weight: 500;
+            }
+            ins {
+                color: #777;
+                text-decoration: none;
+            }
+        }
+    }
+}
