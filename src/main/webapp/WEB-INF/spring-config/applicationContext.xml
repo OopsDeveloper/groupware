@@ -19,22 +19,11 @@
     <!-- applicationContext : view와 관련되지 않은 객체를 정의(Service, Repository(DAO), DB등 비즈니스 로직과 관련된 설정) -->
 
     <!-- DataSource 설정 (20220723) -->
-    <bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
         <property name="url" value="jdbc:log4jdbc:mariadb://203.245.44.104:3306/itstudygroup"/>
         <property name="username" value="itstudygroup"/>
         <property name="password" value="kys157476"/>
-    </bean>
-
-    <!-- 쿼리 log 표출 -->
-    <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-        <constructor-arg ref="dataSourceSpied" />
-        <property name="logFormatter">
-            <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
-                <property name="loggingType" value="MULTI_LINE" />
-                <property name="sqlPrefix" value="SQL : " />
-            </bean>
-        </property>
     </bean>
 
     <!-- SqlSessionFactory 설정 : dataSource 참조, mybatis-config.xml 경로 설정 -->

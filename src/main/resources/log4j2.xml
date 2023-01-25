@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="console_root" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %5p %m%n" />
+        </Console>
+        <Console name="console_com" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %5p [%c] %m%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="grpstudy.grpware" level="INFO" additivity="false">
+            <AppenderRef ref="console_com" />
+        </Logger>
+
+        <Logger name="org.springframework" level="INFO" additivity="false">
+            <AppenderRef ref="console_com" />
+        </Logger>
+
+        <!-- SQL 로그 출력을 위한 설정 추가 시작  -->
+        <Logger name="jdbc.sqlonly" level="ERROR" additivity="false">
+            <AppenderRef ref="console_com"/>
+        </Logger>
+        <Logger name="jdbc.sqltiming" level="INFO" additivity="false">
+            <AppenderRef ref="console_com"/>
+        </Logger>
+        <Logger name="jdbc.audit" level="ERROR" additivity="false">
+            <AppenderRef ref="console_com"/>
+        </Logger>
+        <Logger name="jdbc.resultset" level="ERROR" additivity="false">
+            <AppenderRef ref="console_com"/>
+        </Logger>
+        <Logger name="jdbc.resultsettable" level="INFO" additivity="false">
+            <AppenderRef ref="console_com"/>
+        </Logger>
+        <!-- SQL 로그 출력을 위한 설정 추가 끝 -->
+
+        <Root level="INFO">
+            <AppenderRef ref="console_root" />
+        </Root>
+
+    </Loggers>
+</Configuration>
