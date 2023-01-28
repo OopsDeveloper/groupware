@@ -28,7 +28,7 @@
             FROM
                 itstudygroup.tb_review
             WHERE
-                rev_no = #{revno}
+                rev_no = #{revNo}
         </select>
 
         <!-- 기업 후기 등록 -->
@@ -37,27 +37,27 @@
                 itstudygroup.tb_review
                 (rev_title, rev_content, rev_writer, regist_dt)
             VALUES
-                (#{reviewTitle}, #{reviewContent}, #{reviewWriter}, #{registDt})
+                (#{revTitle}, #{revContent}, #{revWriter}, now())
         </insert>
 
         <!-- 기업 후기 수정 -->
         <update id = "updateReview" parameterType="ReviewVO">
             UPDATE
-                itstudygroup.tb_review
+                tb_review
             SET
-                review_title = #{reviewTitle}
-              , review_content = #{reviewContent}
+                rev_title = #{revTitle}
+              , rev_content = #{revContent}
             WHERE
-                review_no = #{reviewNo}
+                rev_no = #{revNo}
         </update>
 
         <!-- 기업 후기 삭제 -->
-        <delete id = "deleteReveiw" parameterType = "String">
+        <delete id = "deleteReveiw" parameterType = "int">
             DELETE
             FROM
                 itstudygroup.tb_review
             WHERE
-                review_no = #{reviewNo}
+                rev_no = #{revNo}
         </delete>
 
         <resultMap id="reviewMap" type="grpstudy.grpware.review.domain.ReviewVO">

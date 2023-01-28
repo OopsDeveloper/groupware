@@ -3,6 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="grpstudy.grpware.progress.mapper.ProgressMapper">
+
+    <resultMap id="progressMap" type="grpstudy.grpware.progress.domain.ProgressVO">
+        <result property="seq" column="rownum" />
+        <result property="title" column="study_title" />
+        <result property="content" column="study_detail_content" />
+        <result property="nm" column="participant_nm" />
+        <result property="checkYn" column="participant_check_status" />
+    </resultMap>
+
     <select id="selectProgressRate" parameterType="hashmap" resultType="hashmap">
         SELECT tp.progress_no
              , tp.member_no
@@ -16,4 +25,66 @@
             INNER JOIN tb_member tm
                 ON tp.member_no = tm.member_no
     </select>
+
+    <select id="selectStudyAllList" resultMap="progressMap">
+        <![CDATA[
+        SELECT @ROWNUM:=@ROWNUM+1 AS rownum
+                ,ts.study_title
+                ,tsd.study_detail_content
+                ,tsp.participant_nm
+                ,tsp.participant_check_status
+        FROM tb_study ts INNER JOIN tb_study_detail tsd
+        ON ts.study_no = tsd.study_no
+            INNER JOIN tb_study_participant tsp
+            ON tsd.study_detail_no = tsp.study_detail_no
+            INNER JOIN (SELECT @ROWNUM:=0) rownum
+        WHERE tsp.participant_nm = "고용수"
+        ORDER BY rownum
+        ]]>
+    </select>
+
+    <select id="selectStudyList" resultMap="progressMap">
+        <![CDATA[
+        SELECT ts.study_no
+             ,ts.study_title
+        FROM tb_study ts INNER JOIN tb_study_detail tsd
+                                    ON ts.study_no = tsd.study_no
+                         INNER JOIN tb_study_participant tsp
+                                    ON tsd.study_detail_no = tsp.study_detail_no
+        WHERE tsp.participant_nm = "고용수"
+        GROUP BY ts.study_title
+        ORDER BY study_no
+        ]]>
+    </select>
+    <select id="selectStudyDetailList" parameterType="hashmap" resultMap="progressMap">
+        SELECT @ROWNUM:=@ROWNUM+1 AS rownum
+                ,ts.study_title
+                ,tsd.study_detail_content
+                ,tsp.participant_nm
+                ,tsp.participant_check_status
+        FROM tb_study ts INNER JOIN tb_study_detail tsd
+        ON ts.study_no = tsd.study_no
+            INNER JOIN tb_study_participant tsp
+            ON tsd.study_detail_no = tsp.study_detail_no
+            INNER JOIN (SELECT @ROWNUM:=0) rownum
+        WHERE tsp.participant_nm = "고용수"
+          AND ts.study_title = #{study_title}
+        ORDER BY rownum
+    </select>
+
+    <select id="selectStudyParticipantList" resultMap="progressMap">
+        <![CDATA[
+        SELECT @ROWNUM:=@ROWNUM+1 AS rownum
+                ,tsp.participant_nm
+                ,tsp.participant_check_status
+        FROM tb_study ts INNER JOIN tb_study_detail tsd
+        ON ts.study_no = tsd.study_no
+            INNER JOIN tb_study_participant tsp
+            ON tsd.study_detail_no = tsp.study_detail_no
+            INNER JOIN (SELECT @ROWNUM:=0) rownum
+        WHERE tsp.participant_nm = "고용수"
+        ORDER BY rownum
+        ]]>
+    </select>
+
 </mapper>
