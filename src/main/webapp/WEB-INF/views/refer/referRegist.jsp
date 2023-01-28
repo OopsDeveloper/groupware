@@ -28,8 +28,9 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>파일 첨부</td>
                                 <td>
-                                    <input type = "file" name = "file">
+                                <input type = "file" name = "file">
                                 </td>
                             </tr>
                         </table>
