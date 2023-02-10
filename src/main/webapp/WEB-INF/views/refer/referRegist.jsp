@@ -30,7 +30,7 @@
                             <tr>
                                 <td>파일 첨부</td>
                                 <td>
-                                <input type = "file" name = "file">
+                                <input type = "file" name = "uploadFile" size=10>
                                 </td>
                             </tr>
                         </table>
