@@ -35,6 +35,7 @@ public class ProgressServiceImpl implements ProgressService{
 
     @Override
     public List<ProgressVO> selectStudyList() throws Exception {
+        //progressBar 데이터 계산해서 넘기기
         return progressMapper.selectStudyList();
     }
 

@@ -58,7 +58,7 @@
                         <c:forEach var="studyList" items="${studyList}" varStatus="status">
                             <tr>
                                 <td>${status.count}</td>
-                                <td class="study-title">${studyList.title}</td>
+                                <td class="study-title"><div class="study-title">${studyList.title}</div></td>
                                 <td class="progress-bar">
                                     <div class="progress-bar-value"></div>
                                     <div class="progress-bar-fill"></div>
@@ -76,6 +76,7 @@
 
 <script>
     $(function () {
+        let pb1 = new ProgressBar(document.querySelector('.progress-bar'), 75);
         $(".study-title").on("click", function (e) {
             console.log("click!");
             let headName = $(this).text();
@@ -105,47 +106,14 @@
                         + '</td>'
                         + '</tr>';
                     });
-                    $(".dataTables-empty").closest('tr').remove();
+                    $(".datatable-empty").closest('tr').remove();
                     $(".content-tbody").append(tempStr);
                 },
                 error: function(x, o, e){
-                    debugger;
-                    alert(x.status + " : "+ o +" : "+e + "progressDetailListAjax");
+                    alert(x.status + " : "+ o +" : "+e + " progressDetailListAjax");
                 }
             });
 
-            /*
-            var str = ''
-
-            str = `
-            <div class="card-header">
-                <i class="fas fa-table me-1"></i>
-                토비의 스프링 수정
-            </div>
-            <div class="card-body">
-                <table id="datatablesSimple">
-                    <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>목차</th>
-                        <th>완료</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1.스프링의 이해 수정</td>
-                        <td>
-                            <input type="checkbox" name="checkedValue" value="1"/> 완료
-                            <input type="checkbox" name="checkedValue" value="0"/> 미완료
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            `;
-            $(".progress-detail-present").html(str);
-            */
         });
     });
 
@@ -154,35 +122,34 @@
             this.valueElem = element.querySelector('.progress-bar-value');
             this.fillElem = element.querySelector('.progress-bar-fill');
 
-            this.setValue(initialValue)
+                this.setValue(initialValue)
 
-            console.log(this.valueElem)
-            console.log(this.fillElem)
-        }
-
-        setValue(newValue) {
-            if (newValue < 0) {
-                newValue = 0;
-            }
-            if (newValue > 100) {
-                newValue = 100;
+                console.log(this.valueElem)
+                console.log(this.fillElem)
             }
 
-            this.value = newValue;
-            this.update();
+            setValue(newValue) {
+                if (newValue < 0) {
+                    newValue = 0;
+                }
+                if (newValue > 100) {
+                    newValue = 100;
+                }
+
+                this.value = newValue;
+                this.update();
+            }
+
+            update() {
+                let percentage = this.value + '%'; // 75%
+                this.fillElem.style.width = percentage;
+                this.valueElem.textContent = percentage;
+            }
         }
 
-        update() {
-            let percentage = this.value + '%'; // 75%
-            this.fillElem.style.width = percentage;
-            this.valueElem.textContent = percentage;
-        }
-    }
-
-    let pb1 = new ProgressBar(document.querySelector('.progress-bar'), 75);
-
+        // let pb1 = new ProgressBar(document.querySelector('.progress-bar'), 75);
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/resources/js/scripts.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@v5.0.3" crossorigin="anonymous"></script>
 <script src="/resources/js/datatables-simple-demo.js"></script>
