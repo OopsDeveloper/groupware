@@ -6,6 +6,8 @@
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
 <!-- fullcalendar 언어 CDN -->
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales-all.min.js'></script>
+<%--sheetJs CDN--%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
 <style>
     /* body 스타일 */
     html, body {
@@ -37,6 +39,15 @@
                         <div id='calendar'></div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="container-fluid px-4">
+            <div id="calendar-file">
+                <div id="calendar-list">
+                    여기에 파일 리스트가 보이게 해봅시다!
+                </div>
+                <input type="file" id="excelFile" onchange='excelExport(event)'/>
+                <button>넣기</button>
             </div>
         </div>
     </main>
@@ -193,7 +204,28 @@
         return dateString;
     }
 </script>
+<script>
+    function excelExport(event){
+        debugger;
+        var input = event.target;
+        var reader = new FileReader();
+        reader.onload = function(){
+            var fileData = reader.result;
+            var wb = XLSX.read(fileData, {type : 'binary', cellDates:true, dateNF:'yyyy-mm-dd'});
+            wb.SheetNames.forEach(function(sheetName){
+                var rowObj =XLSX.utils.sheet_to_json(wb.Sheets[sheetName]);
+                console.log(JSON.stringify(rowObj));
+                for(let i = 0 ; i < rowObj.length ; i++){
+                    rowObj[i].startPeriodStart;
+                    rowObj[i].studyTitle;
+                    rowObj[i].studyDetailContent;
+                }
+            })
+        };
+        reader.readAsBinaryString(input.files[0]);
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/resources/js/scripts.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@v5.0.3" crossorigin="anonymous"></script>
 <script src="/resources/js/datatables-simple-demo.js"></script>
