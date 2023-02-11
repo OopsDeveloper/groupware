@@ -36,4 +36,7 @@
     <definition name="study/*" extends="layout-tiles">
         <put-attribute name="body" value="/WEB-INF/views/study/{1}.jsp" />
     </definition>
+    <definition name="mypage/*" extends="layout-tiles">
+        <put-attribute name="body" value="/WEB-INF/views/mypage/{1}.jsp" />
+    </definition>
 </tiles-definitions>

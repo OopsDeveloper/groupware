@@ -28,6 +28,13 @@
                   <textarea name="referContent">${refer.referContent}</textarea>
                 </td>
               </tr>
+              </tr>
+              <tr>
+                <td>파일 첨부</td>
+                <td>
+                  <input type = "file" name = "file">
+                </td>
+              </tr>
             </table>
             <button type="button" style="float: right" onclick="location.href='/refer/referView.do'">뒤로가기</button>
             <button type="button" style="float: right" onclick="location.href='/refer/referDelete.do?referNo=${refer.referNo}'">삭제하기</button>

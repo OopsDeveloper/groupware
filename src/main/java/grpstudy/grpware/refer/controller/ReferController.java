@@ -11,8 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.apache.commons.io.FilenameUtils;
+
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 @Controller
 @Slf4j
@@ -21,8 +26,6 @@ public class ReferController {
 
     @Autowired
      private ReferService referService;
-
-
 
     // 자료실 글 목록
     @RequestMapping("/refer.do")
@@ -53,21 +56,40 @@ public class ReferController {
     @PostMapping("/referRegist.do")
     public String postReferRegist(ReferVO referVO, HttpServletRequest request){
 
+        // 파일이 업로드될 실제 폴더의 경로 지정(/webapp/psd)
         String Realpath = request.getSession().getServletContext().getRealPath("/file/");
 
         System.out.println(Realpath);
 
+        // form.jsp에서 받아와서 Set한 VO uploadFile 값을 get해서 uploadFile 변수에 저장
         MultipartFile uploadFile = referVO.getUploadFile();
 
-/*        if(!uploadFile.isEmpty()){
-            try{
 
+        if(!uploadFile.isEmpty()){
+            // 업로드한 파일이 비어 있지 않다면.
+            try {
+                String genId = UUID.randomUUID().toString();
+                String originalFileName = uploadFile.getOriginalFilename();
+                String onlyFile = originalFileName.substring(0, originalFileName.lastIndexOf("."));
+                String extention = FilenameUtils.getExtension(originalFileName);
+                String saveFilename = onlyFile + genId.substring(0,3) + "." + extention;
+                referVO.setReferFname(saveFilename);
+
+                uploadFile.transferTo(new File(Realpath+saveFilename));
+
+            }catch (IllegalStateException e){
+                e.printStackTrace();
+            }catch (IOException e){
+                e.printStackTrace();
             }
-        }*/
+        }else{
+            referVO.setReferFname("emtpy.jpg");
+        }
+        referService.setRefer(referVO);
 
         System.out.println("referVO : " + referVO);
 
-        int cnt = referService.setRefer(referVO);
+        //int cnt = referService.setRefer(referVO);
 
         return "redirect:/refer/refer.do";
     }

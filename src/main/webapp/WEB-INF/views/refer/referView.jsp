@@ -24,6 +24,10 @@
               <td>내용</td>
               <td>${refer.referContent}</td>
             </tr>
+            <tr>
+              <td>첨부파일</td>
+              <td>${refer.referFname}</td>
+            </tr>
           </table>
           <button style="float: right" onclick="location.href='/refer/refer.do'">뒤로가기</button>
           <button style="float: right" onclick="location.href='/refer/referModify.do?referNo=${refer.referNo}'">수정하기</button>

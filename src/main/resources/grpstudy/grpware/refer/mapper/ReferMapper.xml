@@ -25,6 +25,7 @@
                  , refer_content
                  , refer_writer
                  , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
+                 , refer_fname
             FROM
                 itstudygroup.tb_refer
             WHERE
@@ -35,9 +36,9 @@
         <insert id = "setRefer" parameterType="ReferVO">
             INSERT INTO
                 itstudygroup.tb_refer
-                (refer_title, refer_content, refer_writer, regist_dt)
+                (refer_title, refer_content, refer_writer, regist_dt, refer_fname)
             VALUES
-                (#{referTitle}, #{referContent}, #{referWriter}, now());
+                (#{referTitle}, #{referContent}, #{referWriter}, now(), #{referFname})
 
         </insert>
 
@@ -48,6 +49,7 @@
             SET
                 refer_title = #{referTitle}
               , refer_content = #{referContent}
+              , refer_fname = #{referFname}
             WHERE
                 refer_no = #{referNo}
         </update>
@@ -67,6 +69,7 @@
             <result property="referContent" column="refer_content" />
             <result property="referWriter" column="refer_writer" />
             <result property="registDt" column="regist_dt" />
+            <result property="referFname" column="refer_fname" />
         </resultMap>
 
 </mapper>

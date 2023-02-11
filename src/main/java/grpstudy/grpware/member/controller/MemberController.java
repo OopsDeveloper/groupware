@@ -1,10 +1,13 @@
 package grpstudy.grpware.member.controller;
 
 import grpstudy.grpware.auth.domain.MemberVO;
+import grpstudy.grpware.common.utils.CommonUtils;
+import grpstudy.grpware.common.utils.HashParameterMap;
 import grpstudy.grpware.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,6 +46,22 @@ public class MemberController {
         memberService.updateAuth(auth,id);
 
         return "redirect:/member/member.do";
+    }
+
+    @GetMapping("/updateMember.do")
+    public String getUpdateMember(Model model) {
+        HashParameterMap params = new HashParameterMap();
+        params.setString("memberId", CommonUtils.getLoginId());
+        MemberVO memberVO = memberService.read(params.getParameterMap());
+        model.addAttribute("memberVO", memberVO);
+
+        return "mypage/updateMember";
+    }
+
+    @PostMapping("/updateMember.do")
+    public String postUpdateMember(MemberVO memberVO){
+        /*멤버 업데이트 하기*/
+        return "redirect:/mypage/mypage.do";
     }
 }
 
