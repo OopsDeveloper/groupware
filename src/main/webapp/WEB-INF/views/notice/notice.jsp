@@ -25,7 +25,7 @@
                         <tbody>
                             <c:forEach var="notice" items="${noticeList}">
                                 <tr>
-                                    <td class="test">${notice.noticeNo}</td>
+                                    <td>${notice.noticeNo}</td>
                                     <td><a href="/notice/noticeView.do?bno=${notice.noticeNo}">${notice.noticeTitle}</a></td>
                                     <td>${notice.registDt}</td>
                                     <td>${notice.noticeWriter}</td>
@@ -39,14 +39,7 @@
         </div>
     </main>
 </div>
-<script>
-    $(function () {
-        $(".test").on("click",function () {
-            console.log("click")
-        })
-    })
-</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/resources/js/scripts.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@v5.0.3" crossorigin="anonymous"></script>
 <script src="/resources/js/datatables-simple-demo.js"></script>
