@@ -15,6 +15,7 @@
                  , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
             FROM
                   tb_review
+            ORDER BY rev_no DESC;
         </select>
 
         <!-- 기업 후기 상세화면 -->
@@ -52,7 +53,7 @@
         </update>
 
         <!-- 기업 후기 삭제 -->
-        <delete id = "deleteReveiw" parameterType = "int">
+        <delete id = "deleteReview" parameterType = "int">
             DELETE
             FROM
                 itstudygroup.tb_review

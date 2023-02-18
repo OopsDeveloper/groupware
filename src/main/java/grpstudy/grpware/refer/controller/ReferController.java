@@ -59,7 +59,7 @@ public class ReferController {
         // 파일이 업로드될 실제 폴더의 경로 지정(/webapp/psd)
         String Realpath = request.getSession().getServletContext().getRealPath("/file/");
 
-        System.out.println(Realpath);
+        System.out.println("Realpath : " + Realpath);
 
         // form.jsp에서 받아와서 Set한 VO uploadFile 값을 get해서 uploadFile 변수에 저장
         MultipartFile uploadFile = referVO.getUploadFile();

@@ -11,7 +11,7 @@
                     글쓰기
                 </div>
                 <div class="card-body">
-                    <form method="post" action="/refer/referRegist.do" enctype = "multipart/form-data">
+                    <form method="POST" action="/refer/referRegist.do" enctype = "multipart/form-data">
                         <table>
                             <tr>
                                 <td>제목</td>

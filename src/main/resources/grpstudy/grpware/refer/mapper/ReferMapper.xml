@@ -15,6 +15,7 @@
                  , DATE_FORMAT(regist_dt, '%Y-%m-%d') as regist_dt
             FROM
                 tb_refer
+            ORDER BY refer_no DESC
         </select>
 
         <!-- 자료실 상세화면 -->
