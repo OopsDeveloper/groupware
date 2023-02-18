@@ -1,5 +1,24 @@
 <%@page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="/resources/js/jquery/jquery-3.6.1.min.js"></script>
+<script>
+    //프로세스관련
+    let process = {
+            fileupload : function(){
+                alert("ss");
+            }
+        },
+        //이벤트 관련
+        eventbind = function() {
+            $("#uploadBtn").on("click", function(e){
+                e.preventDefault();
+                process.fileupload();
+            });
+        }
+    $(document).ready(function(){
+        eventbind();
+    });
+</script>
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
@@ -9,11 +28,10 @@
             </ol>
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                    사진
+                    <input type="file" name="uploadFile" multiple>
                 </div>
                 <div class="card-body">
-                    <button style="float: right" onclick="location.href='/notice/noticeRegist.do'">사진 등록하기</button>
+                    <button style="float: right" id="uploadBtn">사진 등록하기</button>
                 </div>
             </div>
             <div class="card mb-4">

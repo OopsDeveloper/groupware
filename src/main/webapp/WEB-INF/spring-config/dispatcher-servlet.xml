@@ -35,4 +35,12 @@
 
     <context:component-scan base-package="grpstudy.grpware.*.controller" />
 
+    <!-- 파일첨부설정 시작 -->
+    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+    <!-- 파일첨부설정 끝 -->
+
+    <!-- 파일 경로 설정(properties) 시작 -->
+    <context:property-placeholder location="WEB-INF/spring-config/*.properties" />
+    <!-- 파일 경로 설정(properties) 끝 -->
+
 </beans:beans>
