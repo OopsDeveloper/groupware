@@ -77,6 +77,8 @@
 <script>
     $(function () {
         let pb1 = new ProgressBar(document.querySelector('.progress-bar'), 75);
+
+        //진행한 과정 목차 클릭시
         $(".study-title").on("click", function (e) {
             console.log("click!");
             let headName = $(this).text();
@@ -98,22 +100,36 @@
 
                     result.forEach(function (item, index) {
                         tempStr += '<tr>'
-                        + '<td class="seq">' + result[index].seq + '</td>'
-                        + '<td class="content">' + result[index].content + '</td>'
+                        + '<td class="seq">' + item.seq + '</td>'
+                        + '<td class="content">' + item.content + '</td>'
                         + '<td class="">'
-                        + '<input type="checkbox" name="checkedValue" value="1"/>' + ' 완료'
-                        + '<input type="checkbox" name="checkedValue" value="0"/>' + ' 미완료'
+                        + '<input type="radio" class="checkY' + index + '" name="checkedValue'+ index +'" value="1"/>' + ' 완료 &nbsp'
+                        + '<input type="radio" class="checkN' + index + '" name="checkedValue'+ index +'" value="0"/>' + ' 미완료'
                         + '</td>'
+                        + '<td class="hidden" style="display: none;">' + item.title + '</td>'
+                        + '<td class="hidden" style="display: none;">' + item.nm + '</td>'
                         + '</tr>';
                     });
                     $(".datatable-empty").closest('tr').remove();
                     $(".content-tbody").append(tempStr);
+
+                    result.forEach(function (item, index) {
+                        if($(".checkY" + index).val() == item.checkYn) {
+                            $(".checkY" + index).attr("checked",true);
+                        }
+                        if($(".checkN" + index).val() == item.checkYn) {
+                            $(".checkN" + index).attr("checked",true);
+                        }
+                    });
                 },
                 error: function(x, o, e){
                     alert(x.status + " : "+ o +" : "+e + " progressDetailListAjax");
                 }
             });
+        });
 
+        $(document).on("click","input[type=radio]", function () {
+            console.log($(this))
         });
     });
 
