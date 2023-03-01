@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <div id="layoutSidenav_nav">
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -38,6 +39,7 @@
                         <a class="nav-link" href="/progress/progress.do">진도율</a>
                     </nav>
                 </div>
+                <c:if test="${adminChk == true}">
                 <div class="sb-sidenav-menu-heading">ADMIN PAGE</div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#adminPages" aria-expanded="false" aria-controls="adminPages">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-toolbox"></i></div>
@@ -50,6 +52,7 @@
                         <a class="nav-link" href="/place/place.do">장소 선택</a>
                     </nav>
                 </div>
+                </c:if>
             </div>
         </div>
         <div class="sb-sidenav-footer">
