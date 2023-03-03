@@ -33,6 +33,7 @@
         from  tb_member a, tb_auth b
         where a.member_id = b.auth_id
         and   a.member_id = #{memberId}
+              /*'${@grpstudy.grpware.common.utils.CommonUtils@getLoginId()}'*/
         <if test="@grpstudy.grpware.common.utils.MapperUtil@isNotBlank(userPw)">
             AND a.member_pw = #{userPw}
         </if>
@@ -50,7 +51,7 @@
     </select>
 
     <delete id="deleteMember" parameterType="string">
-        DELETE FROM tb_member WHERE member_id = #{id}
+        DELETE FROM tb_member WHERE member_id = '${@grpstudy.grpware.common.utils.CommonUtils@getLoginId()}'
     </delete>
 
     <update id="updateAuth" parameterType="string">

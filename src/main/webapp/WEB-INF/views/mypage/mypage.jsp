@@ -2,10 +2,51 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="/resources/js/jquery/jquery-3.6.1.min.js"></script>
 <script>
+    const regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+    const maxSize = 5242880; //5MB
+
     //프로세스관련
     let process = {
             fileupload : function(){
-                alert("ss");
+                let formData = new FormData();
+                let inputFile = $("input[name='uploadFile']");
+                let files = inputFile[0].files;
+
+                console.log(files);
+
+                //파일 데이터를 formdata에 추가하기
+                for (let i = 0; i < files.length; i++) {
+                    //파일 유효성 체크
+                    if (this.checkExtension(files[i].name), files[i].size) {
+                        formData.append("uploadFile", files[i]);
+                    } else {
+                        return false;
+                    }
+                }
+
+                //ajax 실행
+                $.ajax({
+                    url: '/upload/ajax.do',
+                    processData: false, //반드시 false
+                    contentType: false, //반드시 false
+                    data: formData,
+                    type: "POST",
+                    success: function (result) {
+                        alert("업로드 되었습니다.");
+                    }
+                });//ajax종료
+            },
+            //업로드 파일 유효성 검사
+            checkExtension : function(fileName, fileSize) {
+                if (fileSize >= maxSize) {
+                    alert(fileName + " : 파일 사이즈가 초과되었습니다.(" + fileSize + " 사이즈는 5MB 초과)");
+                    return false;
+                }
+                if (regex.test(fileName)) {
+                    alert(fileName + " : 해당 종류의 파일은 업로드 할 수 없습니다.");
+                    return false;
+                }
+                return true;
             }
         },
         //이벤트 관련
