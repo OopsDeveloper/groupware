@@ -17,9 +17,11 @@ public class MainController {
     @GetMapping("/main.do")
     public void main(Model model){
         String loginId = CommonUtils.getLoginId();
+        boolean chk = CommonUtils.isAdmin();
 
         PlaceVO vo = placeService.getPlace();
         model.addAttribute("place",vo);
         model.addAttribute("loginId",loginId);
+        model.addAttribute("adminChk",chk);
     }
 }

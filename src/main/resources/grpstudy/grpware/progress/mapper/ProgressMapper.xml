@@ -13,6 +13,7 @@
     </resultMap>
 
     <select id="selectProgressRate" parameterType="hashmap" resultType="hashmap">
+        /* selectProgressRate */
         SELECT tp.progress_no
              , tp.member_no
              , progress_rate
@@ -27,62 +28,79 @@
     </select>
 
     <select id="selectStudyAllList" resultMap="progressMap">
+        /* selectStudyAllList */
         <![CDATA[
         SELECT @ROWNUM:=@ROWNUM+1 AS rownum
                 ,ts.study_title
                 ,tsd.study_detail_content
                 ,tsp.participant_nm
                 ,tsp.participant_check_status
-        FROM tb_study ts INNER JOIN tb_study_detail tsd
-        ON ts.study_no = tsd.study_no
+        FROM tb_study ts
+            INNER JOIN tb_study_detail tsd
+                ON ts.study_no = tsd.study_no
             INNER JOIN tb_study_participant tsp
-            ON tsd.study_detail_no = tsp.study_detail_no
+                ON tsd.study_detail_no = tsp.study_detail_no
+            INNER JOIN tb_member tm
+                ON tsp.participant_nm = tm.member_nm
             INNER JOIN (SELECT @ROWNUM:=0) rownum
-        WHERE tsp.participant_nm = "고용수"
+        WHERE tm.
         ORDER BY rownum
         ]]>
     </select>
 
     <select id="selectStudyList" resultMap="progressMap">
+        /* selectStudyList */
         <![CDATA[
         SELECT ts.study_no
              ,ts.study_title
-        FROM tb_study ts INNER JOIN tb_study_detail tsd
-                                    ON ts.study_no = tsd.study_no
-                         INNER JOIN tb_study_participant tsp
-                                    ON tsd.study_detail_no = tsp.study_detail_no
-        WHERE tsp.participant_nm = "고용수"
+        FROM tb_study ts
+            INNER JOIN tb_study_detail tsd
+                ON ts.study_no = tsd.study_no
+            INNER JOIN tb_study_participant tsp
+                ON tsd.study_detail_no = tsp.study_detail_no
+            INNER JOIN tb_member tm
+                ON tsp.participant_nm = tm.member_nm
+        WHERE tm.member_id = '${@grpstudy.grpware.common.utils.CommonUtils@getLoginId()}'
         GROUP BY ts.study_title
         ORDER BY study_no
         ]]>
     </select>
     <select id="selectStudyDetailList" parameterType="hashmap" resultMap="progressMap">
+        /* selectStudyDetailList */
         SELECT @ROWNUM:=@ROWNUM+1 AS rownum
                 ,ts.study_title
                 ,tsd.study_detail_content
                 ,tsp.participant_nm
                 ,tsp.participant_check_status
-        FROM tb_study ts INNER JOIN tb_study_detail tsd
-        ON ts.study_no = tsd.study_no
+        FROM tb_study ts
+            INNER JOIN tb_study_detail tsd
+                ON ts.study_no = tsd.study_no
             INNER JOIN tb_study_participant tsp
-            ON tsd.study_detail_no = tsp.study_detail_no
+                ON tsd.study_detail_no = tsp.study_detail_no
+            INNER JOIN tb_member tm
+                ON tsp.participant_nm = tm.member_nm
             INNER JOIN (SELECT @ROWNUM:=0) rownum
-        WHERE tsp.participant_nm = "고용수"
+        WHERE tm.member_id = '${@grpstudy.grpware.common.utils.CommonUtils@getLoginId()}'
           AND ts.study_title = #{study_title}
         ORDER BY rownum
     </select>
 
     <select id="selectProgressBar" resultMap="progressMap">
+        /* selectProgressBar */
         SELECT @ROWNUM:=@ROWNUM+1 AS ROWNUM
             ,ts.study_title
             ,tsd.study_detail_content
             ,tsp.participant_nm
             ,tsp.participant_check_status
         FROM tb_study_participant tsp
-            INNER JOIN tb_study_detail tsd ON tsp.study_detail_no = tsd.study_detail_no
-            INNER JOIN tb_study ts ON tsd.study_no = ts.study_no
+            INNER JOIN tb_member tm
+                ON tsp.participant_nm = tm.member_nm
+            INNER JOIN tb_study_detail tsd
+                ON tsp.study_detail_no = tsd.study_detail_no
+            INNER JOIN tb_study ts
+                ON tsd.study_no = ts.study_no
             INNER JOIN (SELECT @ROWNUM:=0) rownum
-        WHERE participant_nm = '고용수'
+        WHERE tm.member_id = '${@grpstudy.grpware.common.utils.CommonUtils@getLoginId()}'
         ORDER BY rownum;
     </select>
 
