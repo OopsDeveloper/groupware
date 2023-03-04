@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <div id="layoutSidenav_nav">
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
@@ -39,20 +40,20 @@
                         <a class="nav-link" href="/progress/progress.do">진도율</a>
                     </nav>
                 </div>
-                <c:if test="${adminChk == true}">
-                <div class="sb-sidenav-menu-heading">ADMIN PAGE</div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#adminPages" aria-expanded="false" aria-controls="adminPages">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-toolbox"></i></div>
-                    관리자 페이지
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="adminPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="/member/member.do">회원 관리</a>
-                        <a class="nav-link" href="/place/place.do">장소 선택</a>
-                    </nav>
-                </div>
-                </c:if>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <div class="sb-sidenav-menu-heading">ADMIN PAGE</div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#adminPages" aria-expanded="false" aria-controls="adminPages">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-toolbox"></i></div>
+                        관리자 페이지
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="adminPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="/member/member.do">회원 관리</a>
+                            <a class="nav-link" href="/place/place.do">장소 선택</a>
+                        </nav>
+                    </div>
+                </sec:authorize>
             </div>
         </div>
         <div class="sb-sidenav-footer">
