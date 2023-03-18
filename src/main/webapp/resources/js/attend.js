@@ -9,7 +9,7 @@ $(document).ready(function (){
             lng = position.coords.longitude;
             accur = Math.floor(position.coords.accuracy);
 
-            alert(lat + "," + lng + "/" + accur);
+            // alert(lat + "," + lng + "/" + accur);
         },
         function (error){
             switch (error.code){
@@ -29,9 +29,6 @@ $(document).ready(function (){
             type:"POST",
             url:"/attend/attend.do",
             data:{"lat":lat,"lng":lng, "accur":accur},
-            beforeSend : function(xhr){
-                xhr.setRequestHeader(header, token);
-            },
             success:function (result){
                 console.log(result);
             },

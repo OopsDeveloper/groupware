@@ -1,5 +1,5 @@
-    let token = $("meta[name='_csrf']").attr("content");
-    let header = $("meta[name='_csrf_header']").attr("content");
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
     // 마커를 담을 배열입니다
     var markers = [];
 
@@ -227,7 +227,6 @@
     }
 
     function savePlcae(){
-        debugger;
         var cPlace = $("#cPlace").val();
         var address = $("#addressName").val();
         var title = $("#placeName").val();
@@ -241,9 +240,6 @@
                 type:"POST",
                 url:"/place/setPlace.do",
                 data:{"placeX":x, "placeY":y,"placeAddress":address,"placeName":title},
-                beforeSend : function(xhr){
-                    xhr.setRequestHeader(header, token);
-                },
                 success : function (result){
                     if(result === "OK"){
                         location.reload();

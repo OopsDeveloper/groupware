@@ -21,14 +21,6 @@
             <param-value>/WEB-INF/spring-config/dispatcher-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
-        <!-- 파일첨부 시작-->
-        <multipart-config>
-            <location>C:\\upload\\temp</location><!-- 파일임시저장공간 필요 -->
-            <max-file-size>20971520</max-file-size><!--1MB * 20-->
-            <max-request-size>41943040</max-request-size><!--40MB-->
-            <file-size-threshold>20971520</file-size-threshold>
-        </multipart-config>
-        <!-- 파일첨부 끝-->
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>

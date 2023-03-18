@@ -6,15 +6,15 @@
              xsi:schemaLocation="
                 http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-             ">
+		        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-3.2.xsd
+                ">
 
-    <resources mapping="/resources/**" location="/resources/" />
+    <resources mapping="/resources/**" location="/resources/"/>
 
-   <!-- tiles 설정 -->
+    <!-- tiles 설정 -->
     <beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
-        <beans:property name="order" value="1" />
+        <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+        <beans:property name="order" value="1"/>
     </beans:bean>
 
     <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
@@ -26,21 +26,24 @@
     </beans:bean>
 
     <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <beans:property name="prefix" value="/WEB-INF/views/" />
-        <beans:property name="suffix" value=".jsp" />
-        <beans:property name="order" value="2" />
+        <beans:property name="prefix" value="/WEB-INF/views/"/>
+        <beans:property name="suffix" value=".jsp"/>
+        <beans:property name="order" value="2"/>
     </beans:bean>
 
-    <annotation-driven />
+    <annotation-driven/>
 
-    <context:component-scan base-package="grpstudy.grpware.*.controller" />
+    <context:component-scan base-package="grpstudy.grpware.*.controller"/>
 
     <!-- 파일첨부설정 시작 -->
-    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <beans:property name="maxUploadSize" value="10485760"/>
+        <beans:property name="defaultEncoding" value="utf-8"/>
+    </beans:bean>
     <!-- 파일첨부설정 끝 -->
 
-    <!-- 파일 경로 설정(properties) 시작 -->
-    <context:property-placeholder location="WEB-INF/spring-config/*.properties" />
-    <!-- 파일 경로 설정(properties) 끝 -->
+    <!-- 프로퍼티 경로 설정 시작 -->
+    <context:property-placeholder location="classpath:filepath.properties"/>
+    <!-- 프로퍼티 경로 설정 끝 -->
 
 </beans:beans>
