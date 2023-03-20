@@ -3,21 +3,49 @@
 <script src="/resources/js/jquery/jquery-3.6.1.min.js"></script>
 <script>
     const regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
-    const maxSize = 5242880; //5MB
+    const maxSize = 20971520; //20MB
 
-    //프로세스관련
+    /**
+     * 함수 모아놓는 곳
+     * */
+    //업로드 파일 유효성 검사
+    function checkExtension(fileName, fileSize) {
+        if (fileSize >= maxSize) {
+            alert(fileName + " : 파일 사이즈가 초과되었습니다.(" + fileSize + " 사이즈는 5MB 초과)");
+            return false;
+        }
+        if (regex.test(fileName)) {
+            alert(fileName + " : 해당 종류의 파일은 업로드 할 수 없습니다.");
+            return false;
+        }
+        return true;
+    }
+    //업로드 파일 썸네일 이미지로 보여주기
+    function showUploadedFile(uploadResultArr){
+        let uploadResult = $(".uploadResult");
+        let str = "";
+
+        $(uploadResultArr).each(function (i, obj) {
+            str += "<li>" + obj.fileName + "</li>";
+        });
+        uploadResult.html(str);
+    }
+
+    /**
+     * 프로세스
+     * */
     let process = {
             fileupload : function(){
+                const cloneObj = $(".uploadDiv").clone();
+
                 let formData = new FormData();
                 let inputFile = $("input[name='uploadFile']");
                 let files = inputFile[0].files;
 
-                console.log(files);
-
                 //파일 데이터를 formdata에 추가하기
                 for (let i = 0; i < files.length; i++) {
                     //파일 유효성 체크
-                    if (this.checkExtension(files[i].name), files[i].size) {
+                    if (checkExtension(files[i].name), files[i].size) {
                         formData.append("uploadFile", files[i]);
                     } else {
                         return false;
@@ -32,24 +60,19 @@
                     data: formData,
                     type: "POST",
                     success: function (result) {
+                        console.log(result);
                         alert("업로드 되었습니다.");
+
+                        //첨부파일 초기화
+                        $(".uploadDiv").html(cloneObj.html());
+                        showUploadedFile(result);
                     }
                 });//ajax종료
             },
-            //업로드 파일 유효성 검사
-            checkExtension : function(fileName, fileSize) {
-                if (fileSize >= maxSize) {
-                    alert(fileName + " : 파일 사이즈가 초과되었습니다.(" + fileSize + " 사이즈는 5MB 초과)");
-                    return false;
-                }
-                if (regex.test(fileName)) {
-                    alert(fileName + " : 해당 종류의 파일은 업로드 할 수 없습니다.");
-                    return false;
-                }
-                return true;
-            }
         },
-        //이벤트 관련
+        /**
+         * 이벤트
+         * */
         eventbind = function() {
             $("#uploadBtn").on("click", function(e){
                 e.preventDefault();
@@ -67,11 +90,14 @@
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">${memberVO.memberNm}님의 마이페이지입니다.</li>
             </ol>
-            <div class="card mb-4">
+            <div class="card mb-4 uploadDiv">
                 <div class="card-header">
                     <input type="file" name="uploadFile" multiple>
                 </div>
                 <div class="card-body">
+                    <div class="uploadResult">
+                        <img src='/resources/img/img.png'><!--기본파일이미지(webapp > resources > img) -->
+                    </div>
                     <button style="float: right" id="uploadBtn">사진 등록하기</button>
                 </div>
             </div>
