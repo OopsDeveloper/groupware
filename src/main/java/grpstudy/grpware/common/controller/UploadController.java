@@ -4,10 +4,13 @@ import grpstudy.grpware.common.domain.AttachFileVO;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -61,7 +64,6 @@ public class UploadController {
 
             try{
                 File saveFile = new File(uploadFolderPath, uploadFileName);
-                multipartFile.transferTo(saveFile);
 
                 attachFileVO.setUuid(uuid.toString());
                 attachFileVO.setUploadPath(uploadFolder);
@@ -70,10 +72,11 @@ public class UploadController {
                 if (checkImageType(saveFile)) {
                     attachFileVO.setImage(true);
                     FileOutputStream thumbnail = new FileOutputStream(new File(uploadFolderPath, "s_" + uploadFileName));
-                    Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 500, 500);
+                    Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 180, 180);
                     thumbnail.close();
                 }
 
+                multipartFile.transferTo(saveFile);//썸네일 오류발생으로 순서는 뒤쪽으로 정의해줘야 함
                 list.add(attachFileVO);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -81,6 +84,29 @@ public class UploadController {
             } // end try
         } // end for
         return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    /**
+     * 썸네일 데이터 전송하기
+     */
+    @GetMapping("/display.do")
+    @ResponseBody
+    public ResponseEntity<byte[]> getFile(String fileName) {
+        File file = new File(uploadPath +"\\"+ fileName);
+        log.info("file : " + file);
+
+        ResponseEntity<byte[]> result = null;
+
+        try{
+            HttpHeaders headers = new HttpHeaders();
+
+            headers.add("Content-Type", Files.probeContentType(file.toPath()));
+            result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
+        } catch (IOException e) {
+            log.error("이미지 파일을 가져오는 도중 에러가 발생하였습니다.");
+            e.printStackTrace();
+        }
+        return result;
     }
 
     /**
@@ -102,7 +128,7 @@ public class UploadController {
 
             return contentType.startsWith("image");
         } catch(IOException e){
-            log.error("이미지파일 체크 도중 에러 발생");
+            log.error("이미지 파일 체크 도중 에러 발생");
         }
         return false;
     }

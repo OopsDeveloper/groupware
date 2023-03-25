@@ -26,7 +26,11 @@
         let str = "";
 
         $(uploadResultArr).each(function (i, obj) {
-            str += "<li>" + obj.fileName + "</li>";
+            //각자 아이디가 저장한 이미지파일 불러오기
+            let  fileCallPath = encodeURIComponent(
+                obj.uploadPath + "/s_"+ obj.uuid +"_"+obj.fileName);
+
+            str += "<img src='/upload/display.do?fileName="+fileCallPath+"'>";
         });
         uploadResult.html(str);
     }
