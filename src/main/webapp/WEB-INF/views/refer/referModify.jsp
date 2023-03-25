@@ -11,7 +11,7 @@
           글보기
         </div>
         <div class="card-body">
-          <form method="post" action="/refer/referUpdate.do">
+          <form method="POST" action="/refer/referUpdate.do" enctype="multipart/form-data" >
             <input type="hidden" value="${refer.referNo}" name="referNo">
             <table>
               <tr>
@@ -32,7 +32,7 @@
               <tr>
                 <td>파일 첨부</td>
                 <td>
-                  <input type = "file" name = "file">
+                  <input type = "file" name = "uploadFile" size = 10>
                 </td>
               </tr>
             </table>

@@ -103,9 +103,41 @@ public class ReferController {
     }
     // 자료실 수정 내용
     @PostMapping("/referUpdate.do")
-    public String postReferUpdate(ReferVO referVO, Model model){
-        int cnt = referService.updateRefer(referVO);
+    public String postReferUpdate(ReferVO referVO, Model model, HttpServletRequest request){
 
+        // 파일이 업로드될 실제 폴더의 경로 지정(/webapp/psd)
+        String Realpath = request.getSession().getServletContext().getRealPath("/file/");
+
+        System.out.println("Realpath : " + Realpath);
+
+        // form.jsp에서 받아와서 Set한 VO uploadFile 값을 get해서 uploadFile 변수에 저장
+        MultipartFile uploadFile = referVO.getUploadFile();
+
+        if(!uploadFile.isEmpty()){
+            // 업로드한 파일이 비어 있지 않다면.
+            try {
+                String genId = UUID.randomUUID().toString();
+                String originalFileName = uploadFile.getOriginalFilename();
+                String onlyFile = originalFileName.substring(0, originalFileName.lastIndexOf("."));
+                String extention = FilenameUtils.getExtension(originalFileName);
+                String saveFilename = onlyFile + genId.substring(0,3) + "." + extention;
+                referVO.setReferFname(saveFilename);
+
+                uploadFile.transferTo(new File(Realpath+saveFilename));
+
+            }catch (IllegalStateException e){
+                e.printStackTrace();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }else{
+            referVO.setReferFname("emtpy.jpg");
+        }
+        System.out.println("referVO : " + referVO);
+
+        referService.updateRefer(referVO);
+
+        // model에 넣어 jsp로 변경된 값을 보내줌
         model.addAttribute("refer", referService.getReferDetail(referVO.getReferNo()));
 
         return "refer/referView";

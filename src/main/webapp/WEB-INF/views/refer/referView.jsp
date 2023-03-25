@@ -19,6 +19,7 @@
             <tr>
               <td>작성자</td>
               <td>${refer.referWriter}</td>
+
             </tr>
             <tr>
               <td>내용</td>
